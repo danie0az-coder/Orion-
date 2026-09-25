@@ -4,13 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ORION — Soluções Arquitetônicas em EPS</title>
-
-  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Inter (Sans-serif) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
-
-  <!-- Allowed Basecoat CSS + Fixed Shell -->
+  
+  <!-- Estilos essenciais e Shell API -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
   <style>
 /* Skip artifact shell — fixed styles served beside every artifact.
@@ -127,79 +123,67 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     :root {
       --accent: #F59E0B;
       --accent-hover: #D97706;
-      --accent-contrast: #0F172A;
-      --bg: #121212;
-      --bg-alt: #181818;
-      --surface: #1E1E1E;
-      --surface-elevated: #262626;
-      --surface-light: #FAFAF7;
-      --surface-light-card: #FFFFFF;
-      --text: #F3F4F6;
-      --text-muted: #9CA3AF;
-      --text-dark: #1A1A1A;
-      --text-dark-muted: #595959;
-      --border: #2D2D2D;
-      --border-light: #E5E7EB;
-      --navy: #0F1B3D;
-      --font-serif: 'Cormorant Garamond', Georgia, serif;
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg-carbon: #141414;
+      --surface-carbon: #1A1A1A;
+      --surface-carbon-alt: #222222;
+      --border-carbon: #2F2F2F;
+      --text-silver: #C0C5CE;
+      --navy-orion: #0F1B3D;
+      --font-serif: "Cinzel", "Playfair Display", "Georgia", serif;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
       scroll-behavior: smooth;
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 16px;
+      background-color: var(--bg-carbon);
+      color: #F3F4F6;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      margin: 0;
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, .font-serif {
+    /* Tipografia editorial */
+    .title-serif {
       font-family: var(--font-serif);
-      font-weight: 400;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
+      font-weight: 600;
     }
 
     .eyebrow {
-      font-family: var(--font-sans);
       font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
       text-transform: uppercase;
+      letter-spacing: 0.22em;
       color: var(--accent);
+      font-weight: 700;
       display: inline-block;
       margin-bottom: 0.75rem;
     }
 
-    /* HEADER */
+    /* Header Fixo */
     .site-header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 50;
-      background: rgba(18, 18, 18, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      z-index: 1000;
+      background: rgba(20, 20, 20, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.3s ease;
     }
 
-    .header-inner {
-      max-width: 1360px;
+    .nav-container {
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 1.1rem 2rem;
+      padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -208,2086 +192,1967 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 0.85rem;
       text-decoration: none;
       color: #FFFFFF;
-    }
-
-    .brand-logo svg {
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-    }
-
-    .brand-title {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-name {
-      font-family: var(--font-sans);
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: 0.28em;
-      line-height: 1;
-      color: #FFFFFF;
-    }
-
-    .brand-sub {
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 4px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2.2rem;
+      gap: 2rem;
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
-    .nav-link {
-      color: #D1D5DB;
+    .nav-links a {
+      color: var(--text-silver);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.875rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      transition: color 0.2s;
-      position: relative;
+      transition: color 0.2s ease;
     }
 
-    .nav-link:hover, .nav-link:focus-visible {
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
       color: var(--accent);
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--accent);
-      transition: width 0.25s ease;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
     .btn-amber {
-      background: var(--accent);
-      color: #0F172A;
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
+      background-color: var(--accent);
+      color: #141414;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 0.75rem 1.6rem;
-      border-radius: 2px;
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-sm);
       text-decoration: none;
-      border: 1px solid var(--accent);
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      border: 1px solid var(--accent);
       transition: all 0.25s ease;
       cursor: pointer;
     }
 
-    .btn-amber:hover, .btn-amber:focus-visible {
-      background: var(--accent-hover);
+    .btn-amber:hover {
+      background-color: var(--accent-hover);
       border-color: var(--accent-hover);
-      color: #0F172A;
-      transform: translateY(-1px);
+      color: #0F1B3D;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.25);
     }
 
-    .btn-outline-light {
+    .btn-outline {
       background: transparent;
       color: #FFFFFF;
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 0.75rem 1.6rem;
-      border-radius: 2px;
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-sm);
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.35);
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
       transition: all 0.25s ease;
-      cursor: pointer;
     }
 
-    .btn-outline-light:hover, .btn-outline-light:focus-visible {
-      border-color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.08);
-      color: #FFFFFF;
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
     }
 
-    .menu-toggle {
+    .mobile-toggle {
       display: none;
       background: none;
       border: none;
       color: #FFFFFF;
+      font-size: 1.5rem;
       cursor: pointer;
-      padding: 0.5rem;
     }
 
-    /* HERO */
+    /* Hero */
     .hero-section {
-      position: relative;
       min-height: 100vh;
+      position: relative;
       display: flex;
       align-items: center;
-      padding: 7rem 2rem 4rem;
-      background-color: #121212;
-      overflow: hidden;
+      padding: 8rem 1.5rem 5rem;
+      background: radial-gradient(circle at 75% 30%, #24221C 0%, #141414 70%);
+      border-bottom: 1px solid var(--border-carbon);
     }
 
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: linear-gradient(to right, rgba(14, 14, 14, 0.94) 0%, rgba(14, 14, 14, 0.75) 50%, rgba(14, 14, 14, 0.55) 100%),
-                        url('https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-346Z_Original_user_intent_Photorealistic_architectural.png');
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
-      transform: scale(1.02);
-      transition: transform 8s ease;
-    }
-
-    .hero-container {
-      position: relative;
-      z-index: 2;
-      max-width: 1360px;
+    .hero-grid {
+      max-width: 1320px;
       margin: 0 auto;
-      width: 100%;
-    }
-
-    .hero-content {
-      max-width: 820px;
-    }
-
-    .hero-tagline {
-      display: inline-flex;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.35rem 0.9rem;
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      border-radius: 2px;
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 1.8rem;
     }
 
-    .hero-tagline-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
-
-    .hero-title {
-      font-size: clamp(2.8rem, 6.2vw, 5.4rem);
-      line-height: 1.05;
-      font-weight: 300;
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      line-height: 1.12;
+      margin: 0 0 1.5rem;
       color: #FFFFFF;
-      margin-bottom: 1.6rem;
     }
 
-    .hero-title em {
-      font-style: italic;
-      font-weight: 400;
-      color: #F59E0B;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.05rem, 1.3vw, 1.25rem);
-      color: #C0C5CE;
-      font-weight: 300;
-      max-width: 680px;
-      line-height: 1.7;
+    .hero-content p {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--text-silver);
+      max-width: 580px;
       margin-bottom: 2.5rem;
+      font-weight: 300;
     }
 
-    .hero-cta-group {
+    .hero-ctas {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.2rem;
-      align-items: center;
+      gap: 1rem;
     }
 
-    .hero-scroll-hint {
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-img-box {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-img-box img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-img-box:hover img {
+      transform: scale(1.03);
+    }
+
+    .hero-tag {
       position: absolute;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      color: #9CA3AF;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(20, 20, 20, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: #FFFFFF;
     }
 
-    .hero-scroll-line {
-      width: 48px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    /* COMMON SECTION STYLES */
+    /* Seções Globais */
     .section-wrap {
-      padding: 6.5rem 2rem;
-    }
-
-    .container-wide {
-      max-width: 1360px;
+      padding: 6.5rem 1.5rem;
+      max-width: 1320px;
       margin: 0 auto;
     }
 
     .section-head {
-      margin-bottom: 3.8rem;
+      margin-bottom: 3.5rem;
+      max-width: 780px;
     }
 
-    .section-head.center {
-      text-align: center;
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
+    .section-head h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #FFFFFF;
+      margin: 0 0 1rem;
+      line-height: 1.2;
     }
 
-    .section-title {
-      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-      font-weight: 300;
-      line-height: 1.15;
+    .section-head p {
+      color: var(--text-silver);
+      font-size: 1.1rem;
+      margin: 0;
     }
 
-    .section-desc {
-      margin-top: 1rem;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      max-width: 680px;
+    /* Seção Sobre & Métricas */
+    .about-surface {
+      background-color: var(--surface-carbon);
+      border-top: 1px solid var(--border-carbon);
+      border-bottom: 1px solid var(--border-carbon);
     }
 
-    /* SEÇÃO SOBRE (FUNDO OFF-WHITE EDITORIAL) */
-    .section-sobre {
-      background-color: var(--surface-light);
-      color: var(--text-dark);
-      position: relative;
-    }
-
-    .sobre-grid {
+    .about-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 4.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: center;
     }
 
-    .sobre-text p {
-      font-size: 1.05rem;
-      color: var(--text-dark-muted);
-      line-height: 1.8;
-      margin-bottom: 1.4rem;
-    }
-
-    .sobre-lead {
-      font-family: var(--font-serif);
-      font-size: 1.6rem !important;
-      line-height: 1.4 !important;
-      color: #111827 !important;
-      font-weight: 400;
-    }
-
-    .sobre-kpis {
+    .about-kpis {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.8rem;
-      margin-top: 2.8rem;
-      padding-top: 2.2rem;
-      border-top: 1px solid var(--border-light);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
     }
 
-    .sobre-kpi-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sobre-kpi-value {
-      font-family: var(--font-serif);
-      font-size: 2.8rem;
-      line-height: 1;
-      font-weight: 600;
-      color: #0F172A;
-    }
-
-    .sobre-kpi-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #6B7280;
-      margin-top: 0.4rem;
-      font-weight: 600;
-    }
-
-    .sobre-media {
-      position: relative;
-    }
-
-    .sobre-img-frame {
-      position: relative;
-      padding-bottom: 120%;
-      overflow: hidden;
-      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.22);
-      border-radius: 2px;
-      background: #E5E7EB;
-    }
-
-    .sobre-img-frame img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .sobre-img-frame:hover img {
-      transform: scale(1.03);
-    }
-
-    .sobre-badge {
-      position: absolute;
-      bottom: -1.6rem;
-      right: -1.6rem;
-      background: #1A1A1A;
-      color: #FFFFFF;
-      padding: 1.6rem 2rem;
-      max-width: 260px;
+    .kpi-card {
+      background: var(--surface-carbon-alt);
+      border: 1px solid var(--border-carbon);
+      padding: 1.75rem 1.5rem;
+      border-radius: var(--radius-sm);
       border-left: 3px solid var(--accent);
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
     }
 
-    .sobre-badge-title {
+    .kpi-num {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #FFFFFF;
       font-family: var(--font-serif);
-      font-size: 1.25rem;
-      line-height: 1.2;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
     }
 
-    .sobre-badge-text {
-      font-size: 0.76rem;
-      color: #9CA3AF;
-      letter-spacing: 0.04em;
+    .kpi-desc {
+      font-size: 0.85rem;
+      color: var(--text-silver);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    /* SEÇÃO PRODUTOS (CARBONO) */
-    .section-produtos {
-      background-color: var(--bg);
-      color: var(--text);
-    }
-
+    /* Produtos Cards */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.8rem;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 2rem;
     }
 
     .product-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 2px;
+      background: var(--surface-carbon);
+      border: 1px solid var(--border-carbon);
+      border-radius: var(--radius-sm);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: all 0.35s ease;
-      cursor: pointer;
-      position: relative;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .product-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(245, 158, 11, 0.45);
-      box-shadow: 0 20px 32px -10px rgba(0, 0, 0, 0.7);
+      border-color: rgba(245, 158, 11, 0.4);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
     }
 
-    .product-img-wrap {
+    .product-thumb {
       position: relative;
-      padding-bottom: 80%;
+      height: 230px;
       overflow: hidden;
-      background: #141414;
+      background: #1e1e1e;
     }
 
-    .product-img-wrap img {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .product-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.6s ease;
     }
 
-    .product-card:hover .product-img-wrap img {
+    .product-card:hover .product-thumb img {
       transform: scale(1.06);
-    }
-
-    .product-tag {
-      position: absolute;
-      top: 0.8rem;
-      left: 0.8rem;
-      background: rgba(18, 18, 18, 0.88);
-      backdrop-filter: blur(8px);
-      color: var(--accent);
-      padding: 0.3rem 0.65rem;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      border-radius: 2px;
-      border: 1px solid rgba(245, 158, 11, 0.25);
     }
 
     .product-body {
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      flex: 1;
     }
 
-    .product-title {
-      font-size: 1.35rem;
+    .product-body h3 {
+      font-size: 1.25rem;
+      margin: 0 0 0.5rem;
       color: #FFFFFF;
-      margin-bottom: 0.5rem;
-      font-weight: 400;
     }
 
-    .product-summary {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1.4rem;
+    .product-body p {
+      font-size: 0.9rem;
+      color: var(--text-silver);
+      margin: 0 0 1.5rem;
       flex-grow: 1;
     }
 
     .btn-bio {
-      align-self: flex-start;
       background: transparent;
-      color: var(--accent);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      padding: 0.55rem 1rem;
-      font-size: 0.74rem;
-      letter-spacing: 0.14em;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-weight: 600;
-      border-radius: 2px;
+      padding: 0.65rem 1rem;
+      border-radius: 3px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
+      width: 100%;
     }
 
     .btn-bio:hover {
-      background: var(--accent);
-      color: #0F172A;
+      border-color: var(--accent);
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--accent);
+    }
+
+    /* Seção Obras & Álbuns */
+    .album-block {
+      background: var(--surface-carbon);
+      border: 1px solid var(--border-carbon);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .album-header {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border-carbon);
+      padding-bottom: 1.5rem;
+    }
+
+    .album-header h3 {
+      font-size: 1.85rem;
+      margin: 0 0 0.4rem;
+      color: #FFFFFF;
+    }
+
+    .album-header p {
+      color: var(--text-silver);
+      margin: 0;
+      max-width: 680px;
+    }
+
+    .album-badge {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--accent);
+      padding: 0.35rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .media-card {
+      background: var(--bg-carbon);
+      border: 1px solid var(--border-carbon);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
       border-color: var(--accent);
     }
 
-    /* SEÇÃO PROJETOS (EDITORIAL / FOTOGRAFIA ARQUITETÔNICA) */
-    .section-projetos {
-      background-color: var(--bg-alt);
-      border-top: 1px solid var(--border);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.8rem;
-    }
-
-    .project-card {
-      position: relative;
+    .media-thumb {
+      height: 240px;
       overflow: hidden;
-      border-radius: 2px;
-      background: #141414;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      transition: all 0.35s ease;
+      position: relative;
     }
 
-    .project-card.featured-large {
-      grid-column: span 7;
-      min-height: 480px;
-    }
-
-    .project-card.featured-tall {
-      grid-column: span 5;
-      min-height: 480px;
-    }
-
-    .project-card.standard-4 {
-      grid-column: span 4;
-      min-height: 380px;
-    }
-
-    .project-card img {
+    .media-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
-      filter: brightness(0.92);
-    }
-
-    .project-card:hover img {
-      transform: scale(1.04);
-      filter: brightness(1);
-    }
-
-    .project-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.45) 50%, transparent 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2.2rem;
-      transition: all 0.3s ease;
-    }
-
-    .project-card:hover .project-overlay {
-      background: linear-gradient(to top, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.55) 60%, transparent 100%);
-    }
-
-    .project-location {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .project-name {
-      font-size: 1.8rem;
-      color: #FFFFFF;
-      font-family: var(--font-serif);
-      line-height: 1.15;
-      margin-bottom: 0.6rem;
-    }
-
-    .project-meta {
-      font-size: 0.84rem;
-      color: #D1D5DB;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    /* SEÇÃO PROCESSO (OFF-WHITE / REFINO INDUSTRIAL) */
-    .section-processo {
-      background-color: var(--surface-light);
-      color: var(--text-dark);
-    }
-
-    .process-timeline {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-bottom: 4rem;
-      position: relative;
-    }
-
-    .process-card {
-      background: var(--surface-light-card);
-      border: 1px solid var(--border-light);
-      padding: 2.2rem 1.8rem;
-      border-radius: 2px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .process-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .process-num {
-      font-family: var(--font-serif);
-      font-size: 3rem;
-      line-height: 1;
-      font-weight: 300;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .process-title {
-      font-size: 1.25rem;
-      color: #111827;
-      margin-bottom: 0.8rem;
-      font-weight: 600;
-      font-family: var(--font-sans);
-    }
-
-    .process-desc {
-      font-size: 0.9rem;
-      color: var(--text-dark-muted);
-      line-height: 1.7;
-    }
-
-    .process-spotlight {
-      background: #111827;
-      color: #FFFFFF;
-      border-radius: 2px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      align-items: center;
-    }
-
-    .process-spotlight-img {
-      position: relative;
-      min-height: 380px;
-      height: 100%;
-      background: #1F2937;
-    }
-
-    .process-spotlight-img img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .process-spotlight-body {
-      padding: 3.5rem;
-    }
-
-    .process-spotlight-body h3 {
-      font-size: 2.2rem;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-    }
-
-    .process-spotlight-body p {
-      color: #9CA3AF;
-      line-height: 1.8;
-      font-size: 0.96rem;
-      margin-bottom: 1.8rem;
-    }
-
-    /* SEÇÃO DIFERENCIAIS (CARBONO + GRID REFINADO) */
-    .section-diferenciais {
-      background-color: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-
-    .differentials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .diff-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2.5rem 2.2rem;
-      border-radius: 2px;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .diff-card:hover {
-      border-color: rgba(245, 158, 11, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .diff-icon-box {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      border-radius: 2px;
-      color: var(--accent);
-      margin-bottom: 1.6rem;
-      background: rgba(245, 158, 11, 0.06);
-    }
-
-    .diff-title {
-      font-size: 1.35rem;
-      color: #FFFFFF;
-      margin-bottom: 0.8rem;
-    }
-
-    .diff-desc {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* SEÇÃO CONTATO (CARBONO ELEVADO + ATENDIMENTO MINEIROS-GO) */
-    .section-contato {
-      background-color: var(--bg-alt);
-      border-top: 1px solid var(--border);
-    }
-
-    .contato-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 4.5rem;
-      align-items: start;
-    }
-
-    .contato-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2.2rem;
-    }
-
-    .contato-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-    }
-
-    .contato-item-icon {
-      width: 42px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--accent);
-      background: var(--surface);
-      flex-shrink: 0;
-    }
-
-    .contato-item-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .contato-item-val {
-      font-size: 1.1rem;
-      color: #FFFFFF;
-      text-decoration: none;
-      font-weight: 500;
       display: block;
+      transition: transform 0.4s ease;
     }
 
-    .contato-item-val:hover {
-      color: var(--accent);
+    .media-card:hover .media-thumb img {
+      transform: scale(1.05);
     }
 
-    .contato-item-sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.2rem;
-    }
-
-    .contato-box-cta {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 3rem;
-      border-radius: 2px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .contato-box-cta h3 {
-      font-size: 2rem;
-      color: #FFFFFF;
-      margin-bottom: 1rem;
-    }
-
-    .contato-box-cta p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .phones-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-      padding: 1.4rem;
-      background: #151515;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-    }
-
-    .phone-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.92rem;
-    }
-
-    .phone-row span {
-      color: var(--text-muted);
-    }
-
-    .phone-row a {
-      color: #FFFFFF;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .phone-row a:hover {
-      color: var(--accent);
-    }
-
-    .btn-whatsapp-large {
-      width: 100%;
-      background: var(--accent);
-      color: #0F172A;
-      padding: 1.1rem 2rem;
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn-whatsapp-large:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(245, 158, 11, 0.25);
-    }
-
-    /* FOOTER */
-    .site-footer {
-      background: #0D0D0D;
-      border-top: 1px solid #222222;
-      color: #9CA3AF;
-      padding: 5rem 2rem 2.5rem;
-      font-size: 0.88rem;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 3.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .footer-brand-desc {
-      margin-top: 1.2rem;
-      line-height: 1.7;
-      max-width: 340px;
-      font-size: 0.88rem;
-      color: #888888;
-    }
-
-    .footer-heading {
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .footer-links a {
-      color: #9CA3AF;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    .footer-bottom {
-      padding-top: 2.5rem;
-      border-top: 1px solid #1E1E1E;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: #666666;
-    }
-
-    .footer-disclaimer {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    /* MODAL LIGHTBOX EM TELA CHEIA (COM BIOGRAFIA DAS PEÇAS) */
-    .lightbox-modal {
-      position: fixed;
+    .media-overlay {
+      position: absolute;
       inset: 0;
-      z-index: 100;
-      background: rgba(10, 10, 10, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      display: none;
+      background: rgba(20, 20, 20, 0.4);
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.2s ease;
     }
 
-    .lightbox-modal.active {
-      display: flex;
+    .media-card:hover .media-overlay {
       opacity: 1;
     }
 
-    .lightbox-container {
-      position: relative;
-      background: #161616;
-      border: 1px solid #2E2E2E;
-      border-radius: 2px;
-      width: 100%;
-      max-width: 1240px;
-      max-height: 92vh;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    .media-caption {
+      padding: 1rem 1.25rem;
     }
 
-    .lightbox-visual {
-      position: relative;
-      background: #0A0A0A;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      min-height: 480px;
+    .media-caption h4 {
+      margin: 0 0 0.25rem;
+      font-size: 0.95rem;
+      color: #FFFFFF;
     }
 
-    .lightbox-visual img {
+    .media-caption p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--text-silver);
+    }
+
+    /* Vídeos nos Álbuns e Produção */
+    .video-card {
+      background: var(--bg-carbon);
+      border: 1px solid var(--border-carbon);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .video-box {
       width: 100%;
-      height: 100%;
+      background: #000;
+      position: relative;
+    }
+
+    .video-box video {
+      width: 100%;
+      height: 260px;
       object-fit: cover;
       display: block;
     }
 
-    .lightbox-panel {
-      padding: 3rem 2.5rem;
-      overflow-y: auto;
-      max-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      background: #181818;
+    .video-caption {
+      padding: 1.2rem;
     }
 
-    .lightbox-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid #2B2B2B;
-    }
-
-    .lightbox-category {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .lightbox-title {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
+    .video-caption h4 {
+      font-size: 1rem;
+      margin: 0 0 0.35rem;
       color: #FFFFFF;
-      line-height: 1.15;
     }
 
-    .bio-fields {
+    .video-caption p {
+      font-size: 0.85rem;
+      color: var(--text-silver);
+      margin: 0;
+    }
+
+    /* Galeria Editorial de Projetos */
+    .editorial-gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--surface-carbon);
+      border: 1px solid var(--border-carbon);
+      cursor: pointer;
+    }
+
+    .gallery-item.span-7 { grid-column: span 7; height: 420px; }
+    .gallery-item.span-5 { grid-column: span 5; height: 420px; }
+    .gallery-item.span-4 { grid-column: span 4; height: 380px; }
+    .gallery-item.span-8 { grid-column: span 8; height: 380px; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(15, 15, 15, 0.95), rgba(15, 15, 15, 0));
+    }
+
+    .gallery-info h4 {
+      font-size: 1.25rem;
+      margin: 0 0 0.25rem;
+      color: #FFFFFF;
+    }
+
+    .gallery-info p {
+      font-size: 0.85rem;
+      color: var(--text-silver);
+      margin: 0;
+    }
+
+    /* Processo */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      background: var(--surface-carbon);
+      border: 1px solid var(--border-carbon);
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-sm);
+      position: relative;
+    }
+
+    .step-num {
+      font-size: 2.5rem;
+      font-family: var(--font-serif);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .step-card h4 {
+      font-size: 1.1rem;
+      color: #FFFFFF;
+      margin: 0 0 0.75rem;
+    }
+
+    .step-card p {
+      font-size: 0.875rem;
+      color: var(--text-silver);
+      margin: 0;
+    }
+
+    /* Diferenciais */
+    .differentials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .diff-item {
+      background: var(--surface-carbon);
+      border: 1px solid var(--border-carbon);
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .diff-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 6px;
+      background: rgba(245, 158, 11, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .diff-item h4 {
+      font-size: 1.1rem;
+      color: #FFFFFF;
+      margin: 0 0 0.5rem;
+    }
+
+    .diff-item p {
+      font-size: 0.875rem;
+      color: var(--text-silver);
+      margin: 0;
+    }
+
+    /* Contato */
+    .contact-surface {
+      background-color: var(--surface-carbon);
+      border-top: 1px solid var(--border-carbon);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-detail-box {
+      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
     }
 
-    .bio-field {
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      color: var(--accent);
+      margin-top: 3px;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-silver);
+    }
+
+    .contact-val {
+      font-size: 1.05rem;
+      color: #FFFFFF;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-val:hover {
+      color: var(--accent);
+    }
+
+    .form-panel {
+      background: var(--surface-carbon-alt);
+      border: 1px solid var(--border-carbon);
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-silver);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--bg-carbon);
+      border: 1px solid var(--border-carbon);
+      color: #FFFFFF;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Rodapé */
+    .site-footer {
+      background: #0E0E0E;
+      border-top: 1px solid var(--border-carbon);
+      padding: 4.5rem 1.5rem 2rem;
+      color: var(--text-silver);
+      font-size: 0.875rem;
+    }
+
+    .footer-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand p {
+      margin-top: 1rem;
+      color: var(--text-silver);
+      max-width: 320px;
+    }
+
+    .footer-col h5 {
+      color: #FFFFFF;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin: 0 0 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.75rem;
     }
 
-    .bio-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #C0C5CE;
-      font-weight: 600;
+    .footer-col a {
+      color: var(--text-silver);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.4rem;
-    }
-
-    .bio-label::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-
-    .bio-value {
-      font-size: 0.92rem;
-      line-height: 1.7;
-      color: #D6D8DC;
-    }
-
-    .lightbox-actions {
-      margin-top: 2.2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #2B2B2B;
-      display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
-      align-items: center;
+      font-size: 0.8rem;
     }
 
-    .lightbox-close-btn {
+    .disclaimer-badge {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      color: #A0A5B0;
+    }
+
+    /* Lightbox Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: var(--surface-carbon);
+      border: 1px solid var(--border-carbon);
+      border-radius: var(--radius-md);
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-close-btn {
       position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      width: 42px;
-      height: 42px;
-      background: rgba(24, 24, 24, 0.85);
-      border: 1px solid #333333;
-      border-radius: 50%;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
       color: #FFFFFF;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.2s;
       z-index: 10;
-      transition: all 0.2s ease;
     }
 
-    .lightbox-close-btn:hover {
+    .modal-close-btn:hover {
       background: var(--accent);
-      color: #0F172A;
-      border-color: var(--accent);
-      transform: scale(1.05);
+      color: #141414;
     }
 
-    .lightbox-nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
-      background: rgba(18, 18, 18, 0.75);
-      backdrop-filter: blur(8px);
+    .bio-modal-header {
+      padding: 2rem 2.5rem 1.5rem;
+      border-bottom: 1px solid var(--border-carbon);
+    }
+
+    .bio-modal-header h3 {
+      font-size: 1.8rem;
+      margin: 0 0 0.5rem;
+      color: #FFFFFF;
+    }
+
+    .bio-body {
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+
+    .bio-field {
+      background: var(--surface-carbon-alt);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+    }
+
+    .bio-field-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .bio-field-text {
+      color: #E5E7EB;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Lightbox Imagem Galeria */
+    .photo-modal-content {
+      max-width: 1080px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .photo-modal-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+    }
+
+    .photo-modal-caption {
+      margin-top: 1rem;
       color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: all 0.2s ease;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
     }
 
-    .lightbox-nav-btn:hover {
-      background: var(--accent);
-      color: #0F172A;
-      border-color: var(--accent);
-    }
-
-    .lightbox-prev {
-      left: 1.2rem;
-    }
-
-    .lightbox-next {
-      right: 1.2rem;
-    }
-
-    /* RESPONSIVIDADE */
+    /* Responsividade */
     @media (max-width: 1024px) {
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
       }
       .process-timeline {
         grid-template-columns: repeat(2, 1fr);
       }
-      .differentials-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .sobre-grid {
+      .contact-grid {
         grid-template-columns: 1fr;
-        gap: 3.5rem;
+        gap: 2.5rem;
       }
-      .sobre-badge {
-        right: 1rem;
-        bottom: 1rem;
+      .gallery-item.span-7,
+      .gallery-item.span-5,
+      .gallery-item.span-4,
+      .gallery-item.span-8 {
+        grid-column: span 12;
+        height: 360px;
       }
-      .contato-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .footer-top {
+      .footer-container {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
       .nav-links {
-        position: fixed;
-        top: 72px;
+        display: none;
+        position: absolute;
+        top: 100%;
         left: 0;
         width: 100%;
-        background: #161616;
-        border-bottom: 1px solid var(--border);
+        background: #141414;
         flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        transform: translateY(-120%);
-        transition: transform 0.3s ease;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-carbon);
+        gap: 1.25rem;
       }
-      .nav-links.open {
-        transform: translateY(0);
-      }
-      .header-actions .btn-amber {
-        display: none;
-      }
-      .projects-grid {
+      .nav-links.show {
         display: flex;
-        flex-direction: column;
       }
-      .project-card.featured-large,
-      .project-card.featured-tall,
-      .project-card.standard-4 {
-        min-height: 360px;
-      }
-      .products-grid {
-        grid-template-columns: 1fr;
+      .mobile-toggle {
+        display: block;
       }
       .process-timeline {
         grid-template-columns: 1fr;
       }
-      .process-spotlight {
+      .footer-container {
         grid-template-columns: 1fr;
       }
-      .differentials-grid {
+      .hero-section {
+        padding-top: 7rem;
+      }
+      .hero-img-box img {
+        height: 320px;
+      }
+      .about-kpis {
         grid-template-columns: 1fr;
       }
-      .footer-top {
-        grid-template-columns: 1fr;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-      .lightbox-modal {
-        padding: 0;
-      }
-      .lightbox-container {
-        grid-template-columns: 1fr;
-        max-height: 100vh;
-        height: 100vh;
-        border-radius: 0;
-      }
-      .lightbox-visual {
-        min-height: 32vh;
-        max-height: 38vh;
-      }
-      .lightbox-panel {
-        max-height: calc(100vh - 38vh);
-        padding: 1.8rem 1.4rem;
+      .album-block {
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER FIXO -->
-  <header class="site-header" id="header">
-    <div class="header-inner">
+  <!-- Header Fixo -->
+  <header class="site-header">
+    <div class="nav-container">
       <a href="#inicio" class="brand-logo" aria-label="ORION Soluções Arquitetônicas">
-        <!-- SVG Inline: ORION + Constelação com 3 estrelas (uma em âmbar) + traços arquitetônicos -->
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- Moldura geométrica da constelação -->
-          <rect x="2" y="2" width="44" height="44" stroke="#2B2B2B" stroke-width="1.2" fill="#0F1B3D"/>
-          <line x1="8" y1="40" x2="40" y2="8" stroke="#F59E0B" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
-          <line x1="12" y1="36" x2="36" y2="12" stroke="#FFFFFF" stroke-width="1.2" opacity="0.7"/>
-          
-          <!-- Três Estrelas do Cinturão de Órion (Alnitak, Alnilam, Mintaka) -->
-          <!-- Estrela 1 (Prata) -->
-          <circle cx="16" cy="32" r="3.2" fill="#FFFFFF"/>
-          <circle cx="16" cy="32" r="5" stroke="#FFFFFF" stroke-width="0.7" opacity="0.4"/>
-          <!-- Estrela Central 2 (ÂMBAR ACENTO) -->
-          <circle cx="24" cy="24" r="4.2" fill="#F59E0B"/>
-          <circle cx="24" cy="24" r="7" stroke="#F59E0B" stroke-width="0.9" opacity="0.6"/>
-          <!-- Estrela 3 (Prata) -->
-          <circle cx="32" cy="16" r="3.2" fill="#FFFFFF"/>
-          <circle cx="32" cy="16" r="5" stroke="#FFFFFF" stroke-width="0.7" opacity="0.4"/>
-          
-          <!-- Ângulos arquitetônicos ortogonais -->
-          <path d="M6 14H14V6" stroke="#9CA3AF" stroke-width="1.2"/>
-          <path d="M42 34H34V42" stroke="#9CA3AF" stroke-width="1.2"/>
+        <!-- SVG Logomarca ORION com constelação de 3 estrelas e toque Navy #0F1B3D -->
+        <svg width="154" height="38" viewBox="0 0 154 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Ícone Constelação Órion com traços arquitetônicos -->
+          <circle cx="9" cy="27" r="2.2" fill="#C0C5CE"/>
+          <circle cx="19" cy="19" r="2.6" fill="#F59E0B"/>
+          <circle cx="29" cy="11" r="2.2" fill="#C0C5CE"/>
+          <line x1="9" y1="27" x2="19" y2="19" stroke="#0F1B3D" stroke-width="1.4"/>
+          <line x1="19" y1="19" x2="29" y2="11" stroke="#0F1B3D" stroke-width="1.4"/>
+          <line x1="9" y1="27" x2="4" y2="9" stroke="rgba(192, 197, 206, 0.4)" stroke-width="0.8" stroke-dasharray="2 2"/>
+          <line x1="29" y1="11" x2="34" y2="29" stroke="rgba(192, 197, 206, 0.4)" stroke-width="0.8" stroke-dasharray="2 2"/>
+          <!-- Wordmark ORION -->
+          <text x="44" y="27" font-family="'Cinzel', 'Inter', serif" font-size="21" font-weight="700" letter-spacing="4" fill="#FFFFFF">ORION</text>
         </svg>
-        <div class="brand-title">
-          <span class="brand-name">ORION</span>
-          <span class="brand-sub">Soluções em EPS &bull; Pátina</span>
-        </div>
       </a>
 
-      <!-- Menu Principal -->
-      <nav aria-label="Navegação principal">
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#inicio" class="nav-link">Início</a></li>
-          <li><a href="#sobre" class="nav-link">Sobre</a></li>
-          <li><a href="#produtos" class="nav-link">Produtos</a></li>
-          <li><a href="#projetos" class="nav-link">Projetos</a></li>
-          <li><a href="#processo" class="nav-link">Processo</a></li>
-          <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
-          <li><a href="#contato" class="nav-link">Contato</a></li>
-        </ul>
-      </nav>
+      <button class="mobile-toggle" id="menuToggle" aria-label="Abrir menu de navegação">☰</button>
 
-      <div class="header-actions">
-        <a href="https://api.whatsapp.com/send?phone=5562995413236&text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ORION%20e%20gostaria%20de%20um%20or%C3%A7amento." 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="btn-amber">
-          Orçamento
-        </a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Alternar navegação" aria-expanded="false">
-          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-        </button>
-      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#obras">Obras</a></li>
+        <li><a href="#producao">Produção</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li>
+          <a href="https://wa.me/5562995413236?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ORION%20e%20gostaria%20de%20um%20or%C3%A7amento." 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-amber" 
+             style="padding: 0.5rem 1.1rem;">
+             Orçamento
+          </a>
+        </li>
+      </ul>
     </div>
   </header>
 
-  <main id="main-content">
-    <!-- HERO (TELA CHEIA CARBONO) -->
-    <section class="hero-section" id="inicio">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-container">
+  <main>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+      <div class="hero-grid">
         <div class="hero-content">
-          <div class="hero-tagline">
-            <span class="hero-tagline-dot"></span>
-            Engenharia Leve & Revestimentos Vivos &bull; Mineiros-GO
-          </div>
-          <h1 class="hero-title">
-            Pedra Pátina.<br>O caráter da pedra, <em>feito à mão.</em>
-          </h1>
-          <p class="hero-subtitle">
-            Soluções arquitetônicas em EPS e revestimentos cimentícios de alto padrão — da precisão industrial à textura orgânica, do projeto à instalação perfeita na obra.
-          </p>
-          <div class="hero-cta-group">
+          <span class="eyebrow">Arquitetura de Precisão &amp; Arte Cimentícia</span>
+          <h1 class="title-serif">Pedra Pátina. O caráter da pedra, feito à mão.</h1>
+          <p>Soluções arquitetônicas em EPS e revestimentos cimentícios de alto padrão — do projeto ao acabamento.</p>
+          <div class="hero-ctas">
             <a href="#produtos" class="btn-amber">Explorar produtos</a>
-            <a href="https://api.whatsapp.com/send?phone=5562995413236&text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ORION%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn-outline-light">
-              Solicitar orçamento
+            <a href="https://wa.me/5562995413236?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ORION%20e%20gostaria%20de%20um%20or%C3%A7amento." 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-outline">
+               Solicitar orçamento
             </a>
           </div>
         </div>
-      </div>
-      <div class="hero-scroll-hint">
-        <span class="hero-scroll-line"></span>
-        <span>Role para descobrir</span>
+
+        <div class="hero-visual">
+          <div class="hero-img-box">
+            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-346Z_Original_user_intent_Photorealistic_architectural.png" 
+                 alt="Fachada principal de alto padrão com revestimento arquitetônico ORION" 
+                 loading="eager">
+            <div class="hero-tag">Mineiros - GO &bull; Obra Autoral</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- SOBRE A ORION (EDITORIAL OFF-WHITE) -->
-    <section class="section-wrap section-sobre" id="sobre">
-      <div class="container-wide">
-        <div class="sobre-grid">
-          <div class="sobre-text">
-            <span class="eyebrow">Sobre a ORION</span>
-            <h2 class="section-title" style="color: #111827; margin-bottom: 1.5rem;">
-              A convergência entre leveza estrutural e nobreza mineral.
-            </h2>
-            <p class="sobre-lead">
-              A ORION nasceu para libertar a arquitetura contemporânea do peso excessivo e das patologias de trincas dos métodos tradicionais de fachada.
+    <!-- Sobre Nós & Métricas -->
+    <section id="sobre" class="about-surface">
+      <div class="section-wrap">
+        <div class="about-grid">
+          <div>
+            <span class="eyebrow">Engenharia Leve, Estética Monumental</span>
+            <h2 class="title-serif" style="color: #FFF; font-size: 2.6rem; margin-top: 0;">Mestres na fusão entre tecnologia EPS e acabamento mineral</h2>
+            <p style="color: var(--text-silver); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
+              Fundada em Mineiros (GO), a ORION transforma o cenário da construção civil e do design de fachadas por meio de usinagem computadorizada de EPS aliada a fórmulas patenteadas de revestimento cimentício polimérico.
             </p>
-            <p>
-              Em nosso parque industrial em Mineiros (Goiás), combinamos o corte milimétrico de perfis em EPS de alta densidade com a criação artesanal da exclusiva <strong>Pedra Pátina</strong> — placas cimentícias moldadas a partir do moledo natural e pigmentadas com reagentes químicos de oxidação que reagem e amadurecem sob o sol.
-            </p>
-            <p>
-              Oferecemos a arquitetos, construtores e proprietários exigentes uma solução completa: elementos com até 90% menos peso estrutural, fixação mecânico-polimérica imune a rachaduras térmicas e uma textura mineral indistinguível da rocha nativa.
+            <p style="color: var(--text-silver); font-size: 0.98rem; line-height: 1.7;">
+              Criamos elementos com zero sobrecarga estrutural e acabamento autêntico de rochas nobres — conferindo durabilidade contra intempéries do Centro-Oeste e elegância atemporal a residências e edifícios corporativos.
             </p>
 
-            <div class="sobre-kpis">
-              <div class="sobre-kpi-item">
-                <span class="sobre-kpi-value">+450</span>
-                <span class="sobre-kpi-label">Projetos Executados</span>
+            <div class="about-kpis">
+              <div class="kpi-card">
+                <div class="kpi-num">+450</div>
+                <div class="kpi-desc">Projetos Executados</div>
               </div>
-              <div class="sobre-kpi-item">
-                <span class="sobre-kpi-value">12 Anos</span>
-                <span class="sobre-kpi-label">De Experiência Técnica</span>
+              <div class="kpi-card">
+                <div class="kpi-num">12</div>
+                <div class="kpi-desc">Anos de Pioneirismo</div>
               </div>
-              <div class="sobre-kpi-item">
-                <span class="sobre-kpi-value">98%</span>
-                <span class="sobre-kpi-label">Satisfação Comprovada</span>
+              <div class="kpi-card">
+                <div class="kpi-num">98%</div>
+                <div class="kpi-desc">Índice de Satisfação</div>
               </div>
-              <div class="sobre-kpi-item">
-                <span class="sobre-kpi-value">5 Anos</span>
-                <span class="sobre-kpi-label">Garantia Estrutural</span>
+              <div class="kpi-card">
+                <div class="kpi-num">5 Anos</div>
+                <div class="kpi-desc">Garantia Estrutural</div>
               </div>
             </div>
           </div>
 
-          <div class="sobre-media">
-            <div class="sobre-img-frame">
-              <!-- FOTO REAL: Parede interna revestida -->
-              <img src="WhatsApp_Image_2026-09-22_at_15.51.03.jpeg" alt="Parede interna revestida com Pedra Pátina ORION em tons terrosos e nuances de ferrugem">
-            </div>
-            <div class="sobre-badge">
-              <div class="sobre-badge-title">Textura Autêntica</div>
-              <div class="sobre-badge-text">Revestimento cimentício com nuances vivas de ferrugem e óxido mineral em obra finalizada.</div>
+          <div>
+            <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-carbon);">
+              <img src="casasomenzari.jpg" alt="Fachada Casa Somenzari em Mineiros-GO" style="width: 100%; height: 500px; object-fit: cover; display: block;">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRODUTOS & BIOGRAFIA (CARBONO) -->
-    <section class="section-wrap section-produtos" id="produtos">
-      <div class="container-wide">
-        <div class="section-head">
-          <span class="eyebrow">Catálogo Exclusivo</span>
-          <h2 class="section-title">Soluções Esculturais & Revestimentos</h2>
-          <p class="section-desc" style="color: var(--text-muted);">
-            Cada perfil e placa é fruto de um estudo rigoroso de proporção, história e desempenho mecânico. Clique para abrir a biografia técnica de cada peça.
-          </p>
+    <!-- Catálogo de Produtos com Biografia -->
+    <section id="produtos" class="section-wrap">
+      <div class="section-head">
+        <span class="eyebrow">Coleção Arquitetônica</span>
+        <h2 class="title-serif">Elementos esculpidos para transcender o tempo</h2>
+        <p>Cada peça carrega uma história, precisão milimétrica e biografia de acabamento artesanal.</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- 1. Pedra Pátina Natural -->
+        <article class="product-card">
+          <div class="product-thumb">
+            <img src="casasomen.jpg" alt="Pedra Pátina Natural" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Pedra Pátina Natural</h3>
+            <p>Revestimento mineral de base cimentícia com textura que replica a erosão calcária e o toque táctil suave das rochas milenares.</p>
+            <button class="btn-bio" onclick="openBioModal('patina-natural')">Ver Biografia</button>
+          </div>
+        </article>
+
+        <!-- 2. Pedra Pátina Ferrugem -->
+        <article class="product-card">
+          <div class="product-thumb">
+            <img src="casadiogo.jpg" alt="Pedra Pátina Ferrugem" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Pedra Pátina Ferrugem</h3>
+            <p>Oxidações controladas de óxido de ferro sobre massa cimentícia, conferindo calor terroso e estética corten de prestígio.</p>
+            <button class="btn-bio" onclick="openBioModal('patina-ferrugem')">Ver Biografia</button>
+          </div>
+        </article>
+
+        <!-- 3. Molduras e Requadros -->
+        <article class="product-card">
+          <div class="product-thumb">
+            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-50-325Z_Original_user_intent_Close_up_architectural_detai.png" alt="Molduras e Requadros em EPS" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Molduras e Requadros</h3>
+            <p>Perfis milimétricos em EPS resinado para esquadrias e vãos de janelas. Instalação limpa, rápida e sem trincas.</p>
+            <button class="btn-bio" onclick="openBioModal('molduras')">Ver Biografia</button>
+          </div>
+        </article>
+
+        <!-- 4. Sancas e Platibandas -->
+        <article class="product-card">
+          <div class="product-thumb">
+            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-162Z_Original_user_intent_Architectural_detail_shot_of.png" alt="Sancas e Platibandas" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Sancas e Platibandas</h3>
+            <p>Remates monumentais para coroamento de edifícios e platibandas imponentes, eliminando sobrecargas nos beirais.</p>
+            <button class="btn-bio" onclick="openBioModal('sancas')">Ver Biografia</button>
+          </div>
+        </article>
+
+        <!-- 5. Volumetrias com LED -->
+        <article class="product-card">
+          <div class="product-thumb">
+            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-54-832Z_Original_user_intent_Night_architectural_detail_s.png" alt="Volumetrias com Iluminação LED" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Volumetrias com LED</h3>
+            <p>Painéis com nichos e rasgos técnicos embutidos para iluminação linear noturna, destacando volumes e planos verticais.</p>
+            <button class="btn-bio" onclick="openBioModal('volumetrias-led')">Ver Biografia</button>
+          </div>
+        </article>
+
+        <!-- 6. Colunas e Capitéis -->
+        <article class="product-card">
+          <div class="product-thumb">
+            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-496Z_Original_user_intent_Architectural_detail_shot_of.png" alt="Colunas e Capitéis" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Colunas e Capitéis</h3>
+            <p>Releituras neoclássicas e contemporâneas para pórticos e entradas triunfais com o peso de uma fração do concreto armado.</p>
+            <button class="btn-bio" onclick="openBioModal('colunas')">Ver Biografia</button>
+          </div>
+        </article>
+
+        <!-- 7. Painéis e Texturas -->
+        <article class="product-card">
+          <div class="product-thumb">
+            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-17-36-649Z_Original_user_intent_Architectural_detail_shot_of.png" alt="Painéis e Texturas" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Painéis e Texturas</h3>
+            <p>Grandes superfícies em placas 3D autoportantes de fácil ancoragem, propiciando ritmos visuais e sombras cinéticas.</p>
+            <button class="btn-bio" onclick="openBioModal('paineis')">Ver Biografia</button>
+          </div>
+        </article>
+
+        <!-- 8. Projetos Sob Medida -->
+        <article class="product-card">
+          <div class="product-thumb">
+            <img src="casafloresdamata.jpg" alt="Projetos Especiais Sob Medida" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Projetos Sob Medida</h3>
+            <p>Curvaturas orgânicas, brises especiais, pérgulas e elementos customizados a partir do arquivo DWG ou BIM do seu arquiteto.</p>
+            <button class="btn-bio" onclick="openBioModal('sob-medida')">Ver Biografia</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SEÇÃO OBRAS COM OS ÁLBUNS -->
+    <section id="obras" class="section-wrap" style="padding-top: 2rem;">
+      <div class="section-head">
+        <span class="eyebrow">Acervo de Obras Concluídas</span>
+        <h2 class="title-serif">Álbuns de Realizações Reais</h2>
+        <p>Registros fotográficos e audiovisuais de obras entregues com maestria e satisfação absoluta dos clientes.</p>
+      </div>
+
+      <!-- ÁLBUM 1: Casa Somenzari -->
+      <div class="album-block">
+        <div class="album-header">
+          <div>
+            <span class="eyebrow">Álbum 01 &bull; Residencial</span>
+            <h3>Casa Somenzari</h3>
+            <p>Mineiros / GO — Residência unifamiliar monumental com molduras contínuas, platibandas reforçadas e acabamento Pedra Pátina.</p>
+          </div>
+          <div class="album-badge">Obra 100% Entregue</div>
         </div>
 
-        <div class="products-grid" id="productsGrid">
-          <!-- Cards gerados com dados completos para o Lightbox -->
+        <div class="media-grid">
+          <div class="media-card" onclick="openPhotoModal('WhatsApp_Image4_2026-09-22_at_15.58.33.jpg', 'Casa Somenzari — Fachada Principal e Volumetria')">
+            <div class="media-thumb">
+              <img src="WhatsApp_Image4_2026-09-22_at_15.58.33.jpg" alt="Casa Somenzari Fachada Principal" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Fachada Principal</h4>
+              <p>Volumetrias cimentícias e requadros alinhados</p>
+            </div>
+          </div>
+
+          <div class="media-card" onclick="openPhotoModal('WhatsApp_Image_2026-09-22_at_15.51.03.jpg', 'Casa Somenzari — Detalhes Laterais e Platibanda')">
+            <div class="media-thumb">
+              <img src="WhatsApp_Image_2026-09-22_at_15.51.03.jpg" alt="Casa Somenzari Detalhes Platibanda" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Coroamento Superior</h4>
+              <p>Platibanda monolítica em EPS de alta densidade</p>
+            </div>
+          </div>
+
+          <div class="media-card" onclick="openPhotoModal('WhatsApp_Image3_2026-09-22_at_15.51.03.jpg', 'Casa Somenzari — Vista Angular da Varanda')">
+            <div class="media-thumb">
+              <img src="WhatsApp_Image3_2026-09-22_at_15.51.03.jpg" alt="Casa Somenzari Vista Angular" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Ângulo da Varanda</h4>
+              <p>Continuidade estrutural e textura mineral uniforme</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÁLBUM 2: Casa Flores da Mata -->
+      <div class="album-block">
+        <div class="album-header">
+          <div>
+            <span class="eyebrow">Álbum 02 &bull; Contemporâneo</span>
+            <h3>Casa Flores da Mata</h3>
+            <p>Mineiros / GO — Sofisticação arquitetônica integrando fachada, garagem com iluminação linear e ambientes sociais integrados.</p>
+          </div>
+          <div class="album-badge">Obra 100% Entregue</div>
+        </div>
+
+        <div class="media-grid">
+          <div class="media-card" onclick="openPhotoModal('fachadafloresdamata.jpg', 'Casa Flores da Mata — Fachada com Painéis Esculpidos')">
+            <div class="media-thumb">
+              <img src="fachadafloresdamata.jpg" alt="Fachada Casa Flores da Mata" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Fachada Frontal</h4>
+              <p>Composição de pórticos e revestimento mineral</p>
+            </div>
+          </div>
+
+          <div class="media-card" onclick="openPhotoModal('garagemfloresdamata.jpg', 'Casa Flores da Mata — Garagem e Vão Livre')">
+            <div class="media-thumb">
+              <img src="garagemfloresdamata.jpg" alt="Garagem Flores da Mata" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Garagem &amp; Pórtico</h4>
+              <p>Vigas falsas estruturadas sem peso adicional</p>
+            </div>
+          </div>
+
+          <div class="media-card" onclick="openPhotoModal('salacozinhafloresdamata.jpg', 'Casa Flores da Mata — Sala e Cozinha Integradas')">
+            <div class="media-thumb">
+              <img src="salacozinhafloresdamata.jpg" alt="Sala e Cozinha Flores da Mata" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Área Social Integrada</h4>
+              <p>Transição fluida entre exterior e interiores</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÁLBUM 3: CUBAS (NOVO ÁLBUM ADICIONADO) -->
+      <div class="album-block" id="album-cubas" style="border-left: 3px solid var(--accent);">
+        <div class="album-header">
+          <div>
+            <span class="eyebrow">Álbum 03 &bull; Artefatos Especiais</span>
+            <h3 style="color: #FFFFFF;">Cubas</h3>
+            <p style="color: #E2E8F0; font-size: 1.05rem; margin-top: 0.35rem;">
+              Pias e cubas de alto padrão, produzidas artesanalmente com cimento CP5 e formas — peça única, feita à mão.
+            </p>
+            <p style="color: var(--accent); font-size: 0.9rem; margin-top: 0.4rem; font-weight: 500;">
+              Cubas artesanais em cimento — exclusividade e acabamento de alto padrão.
+            </p>
+          </div>
+          <div class="album-badge">Peças Exclusivas &bull; Feitas à Mão</div>
+        </div>
+
+        <!-- Grade de Fotos do Álbum Cubas -->
+        <div class="media-grid" style="margin-bottom: 2rem;">
+          <!-- 1. redonda.jpg -->
+          <div class="media-card" onclick="openPhotoModal('redonda.jpg', 'Cuba Redonda — Cimento CP5 artesanal com acabamento acetinado')">
+            <div class="media-thumb">
+              <img src="redonda.jpg" alt="Cuba redonda artesanal em cimento CP5" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Cuba Redonda</h4>
+              <p>Design circular orgânico com borda refinada e textura pura</p>
+            </div>
+          </div>
+
+          <!-- 2. piapedra.jpg -->
+          <div class="media-card" onclick="openPhotoModal('piapedra.jpg', 'Pia em Pedra — Riqueza textural cimentícia inspirada em rocha maciça')">
+            <div class="media-thumb">
+              <img src="piapedra.jpg" alt="Pia em pedra artesanal" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Pia em Pedra</h4>
+              <p>Escultura funcional com identidade mineral e toque macio</p>
+            </div>
+          </div>
+
+          <!-- 3. piafunda.jpg -->
+          <div class="media-card" onclick="openPhotoModal('piafunda.jpg', 'Pia Funda — Geometria generosa com escoamento oculto e alta resistência')">
+            <div class="media-thumb">
+              <img src="piafunda.jpg" alt="Pia funda em cimento CP5" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Pia Funda</h4>
+              <p>Profundidade elegante e precisão para bancadas nobres</p>
+            </div>
+          </div>
+
+          <!-- 4. colors.jpg -->
+          <div class="media-card" onclick="openPhotoModal('colors.jpg', 'Cuba Colorida — Pigmentação mineral integrada na massa cimentícia')">
+            <div class="media-thumb">
+              <img src="colors.jpg" alt="Cuba colorida pigmentada artesanalmente" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Cuba Colorida (Linha Colors)</h4>
+              <p>Tonalidade sutil incorporada à massa de cimento CP5</p>
+            </div>
+          </div>
+
+          <!-- 5. colorida.jpg -->
+          <div class="media-card" onclick="openPhotoModal('colorida.jpg', 'Cuba Colorida — Nuances terrosas contemporâneas para banheiros de luxo')">
+            <div class="media-thumb">
+              <img src="colorida.jpg" alt="Cuba colorida acabamento artesanal" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Cuba Colorida Studio</h4>
+              <p>Acabamento polimérico protetor hidrorrepelente</p>
+            </div>
+          </div>
+
+          <!-- 6. bolachameioferrugem.jpg -->
+          <div class="media-card" onclick="openPhotoModal('bolachameioferrugem.jpg', 'Cuba Meio Ferrugem — Pátina oxidada exclusiva de efeito ferroso natural')">
+            <div class="media-thumb">
+              <img src="bolachameioferrugem.jpg" alt="Cuba formato bolacha com efeito meio ferrugem" loading="lazy">
+              <div class="media-overlay"><span class="btn-amber" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Ampliar</span></div>
+            </div>
+            <div class="media-caption">
+              <h4>Cuba Bolacha Meio Ferrugem</h4>
+              <p>Gradiente oxidado único entre a pedra pátina e ferro envelhecido</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grade de Vídeos do Álbum Cubas -->
+        <h4 class="title-serif" style="color: #FFFFFF; font-size: 1.25rem; margin: 2rem 0 1rem; border-top: 1px solid var(--border-carbon); padding-top: 1.5rem;">
+          Processo das Cubas em Ação
+        </h4>
+        <div class="media-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+          <!-- Vídeo 1: videobolacha.mp4 -->
+          <div class="video-card">
+            <div class="video-box">
+              <video controls preload="metadata" playsinline poster="bolachameioferrugem.jpg">
+                <source src="videobolacha.mp4" type="video/mp4">
+                Seu navegador não suporta vídeo HTML5.
+              </video>
+            </div>
+            <div class="video-caption">
+              <h4>Cuba bolacha</h4>
+              <p>Processo artesanal de desenforme, cura técnica e lapidação das bordas da cuba formato bolacha.</p>
+            </div>
+          </div>
+
+          <!-- Vídeo 2: paisagismopia.mp4 -->
+          <div class="video-card">
+            <div class="video-box">
+              <video controls preload="metadata" playsinline poster="piapedra.jpg">
+                <source src="paisagismopia.mp4" type="video/mp4">
+                Seu navegador não suporta vídeo HTML5.
+              </video>
+            </div>
+            <div class="video-caption">
+              <h4>Pia com paisagismo</h4>
+              <p>Integração biofílica entre a pia cimentícia esculpida e a vegetação natural em ambiente de contemplação.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJETOS (GALERIA EDITORIAL) -->
-    <section class="section-wrap section-projetos" id="projetos">
-      <div class="container-wide">
+    <!-- SEÇÃO PRODUÇÃO ARTESANAL (VÍDEOS) -->
+    <section id="producao" class="about-surface">
+      <div class="section-wrap">
         <div class="section-head">
-          <span class="eyebrow">Obras de Referência</span>
-          <h2 class="section-title">Portfólio de Fachadas & Interiores</h2>
-          <p class="section-desc" style="color: var(--text-muted);">
-            Projetos residenciais e comerciais de alta exigência em Goiás que adotaram a tecnologia de EPS e a atmosfera atemporal da Pedra Pátina.
-          </p>
+          <span class="eyebrow">Oficina Industrial &amp; Ateliê</span>
+          <h2 class="title-serif">Produção Artesanal em Detalhes</h2>
+          <p>O rigor da cura, a escolha das areias siliciosas e a técnica manual dos nossos artesãos em Mineiros-GO.</p>
         </div>
 
-        <div class="projects-grid">
-          <!-- Projeto 1: Villa Horizonte -->
-          <article class="project-card featured-large" data-project="villa" role="button" tabindex="0">
-            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-346Z_Original_user_intent_Photorealistic_architectural.png" alt="Fachada monumental da Villa Horizonte em Chapadão do Céu">
-            <div class="project-overlay">
-              <span class="project-location">Chapadão do Céu &bull; GO</span>
-              <h3 class="project-name">Villa Horizonte</h3>
-              <p class="project-meta">Platibandas contínuas, molduras em EPS e painéis de Pedra Pátina Ferrugem</p>
+        <div class="media-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+          <!-- Vídeo 1 -->
+          <div class="video-card">
+            <div class="video-box">
+              <video controls preload="metadata" playsinline>
+                <source src="pedramesa.mp4" type="video/mp4">
+                Seu navegador não suporta vídeo HTML5.
+              </video>
             </div>
-          </article>
+            <div class="video-caption">
+              <h4>Mesa em Pedra Pátina</h4>
+              <p>Estruturação de tampo monolítico com acabamento pátina de alta densidade mineral.</p>
+            </div>
+          </div>
 
-          <!-- Projeto 2: Casa dos Ipês (FOTO REAL WhatsApp_Image2) -->
-          <article class="project-card featured-tall" data-project="ipes" role="button" tabindex="0">
-            <img src="WhatsApp_Image2_2026-09-22_at_15.51.03.jpeg" alt="Corredor da Casa dos Ipês em Mineiros revestido em Pedra Pátina com iluminação zenital">
-            <div class="project-overlay">
-              <span class="project-location">Mineiros &bull; GO (Obra Real)</span>
-              <h3 class="project-name">Casa dos Ipês</h3>
-              <p class="project-meta">Corredor sensorial em Pedra Pátina com iluminação oculta de sanca</p>
+          <!-- Vídeo 2 -->
+          <div class="video-card">
+            <div class="video-box">
+              <video controls preload="metadata" playsinline>
+                <source src="pedrapatagonia.mp4" type="video/mp4">
+                Seu navegador não suporta vídeo HTML5.
+              </video>
             </div>
-          </article>
+            <div class="video-caption">
+              <h4>Pedra Patagônia</h4>
+              <p>Texturização inspirada nas rochas andinas, revelando relevos e sombras vivas.</p>
+            </div>
+          </div>
 
-          <!-- Projeto 3: Residência Aurora -->
-          <article class="project-card standard-4" data-project="aurora" role="button" tabindex="0">
-            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-17-36-222Z_Original_user_intent_Photorealistic_architectural.png" alt="Residência contemporânea Aurora em Mineiros">
-            <div class="project-overlay">
-              <span class="project-location">Mineiros &bull; GO</span>
-              <h3 class="project-name">Residência Aurora</h3>
-              <p class="project-meta">Volumetria prismática em EPS com iluminação linear</p>
+          <!-- Vídeo 3 -->
+          <div class="video-card">
+            <div class="video-box">
+              <video controls preload="metadata" playsinline>
+                <source src="produçãopatagonia.mp4" type="video/mp4">
+                Seu navegador não suporta vídeo HTML5.
+              </video>
             </div>
-          </article>
-
-          <!-- Projeto 4: Sobrado Estelar -->
-          <article class="project-card standard-4" data-project="sobrado" role="button" tabindex="0">
-            <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-17-39-811Z_Original_user_intent_Photorealistic_architectural.png" alt="Sobrado Estelar com pórtico de EPS e Pedra Pátina">
-            <div class="project-overlay">
-              <span class="project-location">Mineiros &bull; GO</span>
-              <h3 class="project-name">Sobrado Estelar</h3>
-              <p class="project-meta">Composição neoclássica com requadros e cornijas esculpidas</p>
+            <div class="video-caption">
+              <h4>Produção Patagônia</h4>
+              <p>O passo a passo da moldagem e tratamento hidrofugante nas oficinas da ORION.</p>
             </div>
-          </article>
-
-          <!-- Projeto 5: Fachada Comercial Via Sul (FOTO REAL WhatsApp_Image) -->
-          <article class="project-card standard-4" data-project="viasul" role="button" tabindex="0">
-            <img src="WhatsApp_Image_2026-09-22_at_15.51.03.jpeg" alt="Espaço comercial corporativo em Mineiros com textura cimentícia viva">
-            <div class="project-overlay">
-              <span class="project-location">Mineiros &bull; GO (Obra Real)</span>
-              <h3 class="project-name">Edifício Via Sul</h3>
-              <p class="project-meta">Painel integral de recepção com acabamento pátina e veios de ferro</p>
-            </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PROCESSO DE PRODUÇÃO E INSTALAÇÃO (OFF-WHITE) -->
-    <section class="section-wrap section-processo" id="processo">
-      <div class="container-wide">
-        <div class="section-head center">
-          <span class="eyebrow">Rigor e Maestria</span>
-          <h2 class="section-title" style="color: #111827;">O Método ORION em Quatro Etapas</h2>
-          <p class="section-desc" style="color: var(--text-dark-muted);">
-            Da modulação técnica milimétrica ao toque manual de assentamento e reagentes, unimos a previsibilidade da indústria ao caráter da arte.
-          </p>
+    <!-- Galeria Editorial Projetos -->
+    <section id="projetos" class="section-wrap">
+      <div class="section-head">
+        <span class="eyebrow">Perspectivas &amp; Projetos</span>
+        <h2 class="title-serif">Assinaturas Arquitetônicas</h2>
+        <p>Concepções que transformam volume, luz e matéria em pontos de referência urbanos.</p>
+      </div>
+
+      <div class="editorial-gallery">
+        <!-- 1. Residência Aurora -->
+        <div class="gallery-item span-7" onclick="openPhotoModal('https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-346Z_Original_user_intent_Photorealistic_architectural.png', 'Residência Aurora — Mineiros/GO')">
+          <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-346Z_Original_user_intent_Photorealistic_architectural.png" alt="Residência Aurora" loading="lazy">
+          <div class="gallery-info">
+            <h4>Residência Aurora</h4>
+            <p>Mineiros / GO &bull; Molduras contemporâneas e revestimento monolítico</p>
+          </div>
+        </div>
+
+        <!-- 2. Villa Horizonte -->
+        <div class="gallery-item span-5" onclick="openPhotoModal('https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-17-36-222Z_Original_user_intent_Photorealistic_architectural.png', 'Villa Horizonte — Chapadão do Céu/GO')">
+          <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-17-36-222Z_Original_user_intent_Photorealistic_architectural.png" alt="Villa Horizonte" loading="lazy">
+          <div class="gallery-info">
+            <h4>Villa Horizonte</h4>
+            <p>Chapadão do Céu / GO &bull; Linhas horizontais e platibandas aerodinâmicas</p>
+          </div>
+        </div>
+
+        <!-- 3. Casa dos Ipês -->
+        <div class="gallery-item span-4" onclick="openPhotoModal('casadiogo.jpg', 'Casa dos Ipês — MINEIROS/GO')">
+          <img src="casadiogo.jpg" alt="Casa dos Ipês" loading="lazy">
+          <div class="gallery-info">
+            <h4>Casa dos Ipês</h4>
+            <p>Mineiros / GO &bull; Aplicação de Pátina Ferrugem em planos verticais</p>
+          </div>
+        </div>
+
+        <!-- 4. Sobrado Estelar -->
+        <div class="gallery-item span-4" onclick="openPhotoModal('https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-17-39-811Z_Original_user_intent_Photorealistic_architectural.png', 'Sobrado Estelar — Mineiros/GO')">
+          <img src="https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-17-39-811Z_Original_user_intent_Photorealistic_architectural.png" alt="Sobrado Estelar" loading="lazy">
+          <div class="gallery-info">
+            <h4>Sobrado Estelar</h4>
+            <p>Mineiros / GO &bull; Conexão entre balanços leves em EPS e vãos livres</p>
+          </div>
+        </div>
+
+        <!-- 5. Fachada Comercial Via Sul -->
+        <div class="gallery-item span-4" onclick="openPhotoModal('casasomen.jpg', 'Fachada Comercial Via Sul — MINEIROS/GO')">
+          <img src="casasomen.jpg" alt="Fachada Comercial Via Sul" loading="lazy">
+          <div class="gallery-info">
+            <h4>Fachada Comercial Via Sul</h4>
+            <p>Mineiros / GO &bull; Pórticos imponentes para sede empresarial</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Processo em 4 Etapas -->
+    <section class="about-surface">
+      <div class="section-wrap">
+        <div class="section-head">
+          <span class="eyebrow">Metodologia Industrial</span>
+          <h2 class="title-serif">Da Ideia à Obra Perfeita</h2>
+          <p>Processo rigoroso que combina tecnologia CNC, engenharia de materiais e sensibilidade artística.</p>
         </div>
 
         <div class="process-timeline">
-          <div class="process-card">
-            <span class="process-num">01</span>
-            <h3 class="process-title">Projeto & Medição</h3>
-            <p class="process-desc">
-              Compatibilização tridimensional sobre o projeto arquitetônico, verificação in loco dos vãos e detalhamento milimétrico das peças sob medida.
-            </p>
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h4>Concepção &amp; Modelagem 3D</h4>
+            <p>Recebimento do projeto arquitetônico, conversão em arquivos de corte paramétrico e compatibilização estrutural.</p>
           </div>
 
-          <div class="process-card">
-            <span class="process-num">02</span>
-            <h3 class="process-title">Fabricação Industrial</h3>
-            <p class="process-desc">
-              Corte CNC em EPS de alta densidade estrutural, aplicação de telas estruturantes de fibra de vidro e camadas de polímero acrílico-cimentício.
-            </p>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h4>Usinagem CNC em EPS</h4>
+            <p>Corte computadorizado por fio quente de alta precisão em blocos EPS anti-chamas classe F de máxima densidade.</p>
           </div>
 
-          <div class="process-card">
-            <span class="process-num">03</span>
-            <h3 class="process-title">Transporte & Instalação</h3>
-            <p class="process-desc">
-              Logística cuidadosa e assentamento por equipe técnica especializada com desempenadeira dentada, argamassa especial AC-III e fixação mecânica oculta.
-            </p>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h4>Revestimento Estruturado</h4>
+            <p>Aplicação mecânica e manual de argamassa polimérica armada com tela de fibra de vidro álcali-resistente.</p>
           </div>
 
-          <div class="process-card">
-            <span class="process-num">04</span>
-            <h3 class="process-title">Acabamento & Entrega</h3>
-            <p class="process-desc">
-              Aplicação minuciosa dos reagentes de oxidação química nas peças de Pátina, selagem hidrorrepelente respirável e inspeção final de alinhamento.
-            </p>
-          </div>
-        </div>
-
-        <!-- Spotlight da Obra Real: Instalação -->
-        <div class="process-spotlight">
-          <div class="process-spotlight-img">
-            <!-- FOTO REAL: Instalação na obra -->
-            <img src="WhatsApp_Image3_2026-09-22_at_15.51.03.jpeg" alt="Operários assentando placas de Pedra Pátina com desempenadeira dentada sobre lona na obra em Mineiros">
-          </div>
-          <div class="process-spotlight-body">
-            <span class="eyebrow" style="color: var(--accent);">Garantia em Canteiro</span>
-            <h3>Instalação executada por mestres artesãos.</h3>
-            <p>
-              Não entregamos apenas a peça bruta. Nossa equipe de assentamento domina a calibração de argamassa, o alinhamento com laser cruzado e a distribuição harmônica dos veios das pedras para evitar padrões repetitivos.
-            </p>
-            <a href="https://api.whatsapp.com/send?phone=5562995413236&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20processo%20de%20instala%C3%A7%C3%A3o%20da%20ORION." 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="btn-amber">
-              Consultar suporte para obra
-            </a>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h4>Acabamento &amp; Instalação</h4>
+            <p>Texturização artesanal em Pedra Pátina, proteção hidrofóbica e fixação rápida no canteiro sem entulhos.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- DIFERENCIAIS DA TECNOLOGIA (CARBONO) -->
-    <section class="section-wrap section-diferenciais" id="diferenciais">
-      <div class="container-wide">
-        <div class="section-head">
-          <span class="eyebrow">Superioridade Construtiva</span>
-          <h2 class="section-title">Por que arquitetos escolhem a ORION</h2>
-          <p class="section-desc" style="color: var(--text-muted);">
-            Soluções que superam em longevidade, peso e custo as molduras de gesso, pré-moldados pesados de concreto e rochas extraídas em blocos maciços.
-          </p>
+    <!-- Diferenciais -->
+    <section class="section-wrap">
+      <div class="section-head">
+        <span class="eyebrow">Por que ORION?</span>
+        <h2 class="title-serif">Vantagens que redefinem sua construção</h2>
+        <p>A união incomparável de beleza cimentícia, leveza e rapidez construtiva.</p>
+      </div>
+
+      <div class="differentials-grid">
+        <div class="diff-item">
+          <div class="diff-icon">⚡</div>
+          <h4>Leveza Estrutural</h4>
+          <p>Redução de até 85% do peso comparado ao concreto pré-moldado, dispensando reforços caros de vigas e pilares.</p>
         </div>
 
-        <div class="differentials-grid">
-          <div class="diff-card">
-            <div class="diff-icon-box">
-              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </div>
-            <h3 class="diff-title">90% Menor Peso Estrutural</h3>
-            <p class="diff-desc">Elimina sobrecargas críticas em vigas, balanços e marquises, reduzindo o custo de ferragem e fundação da edificação.</p>
-          </div>
+        <div class="diff-item">
+          <div class="diff-icon">🛡️</div>
+          <h4>Zero Fissuras &amp; Trincas</h4>
+          <p>O núcleo elástico absorve movimentações térmicas da edificação, garantindo fachada impecável por décadas.</p>
+        </div>
 
-          <div class="diff-card">
-            <div class="diff-icon-box">
-              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <h3 class="diff-title">Zero Trincas por Dilatação</h3>
-            <p class="diff-desc">Composto polimérico flexível que absorve integralmente a movimentação térmica severa do Centro-Oeste sem criar fissuras.</p>
-          </div>
+        <div class="diff-item">
+          <div class="diff-icon">🌡️</div>
+          <h4>Isolamento Térmico</h4>
+          <p>A condutividade térmica mínima do EPS atua como escudo contra o calor extremo, gerando economia energética.</p>
+        </div>
 
-          <div class="diff-card">
-            <div class="diff-icon-box">
-              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-            </div>
-            <h3 class="diff-title">Reagentes de Oxidação Real</h3>
-            <p class="diff-desc">Nossa pátina não é tinta ou estampa: é oxidação induzida sobre cimento CP5, gerando tons vivos e irrepetíveis de corten e cobre.</p>
-          </div>
-
-          <div class="diff-card">
-            <div class="diff-icon-box">
-              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <h3 class="diff-title">Agilidade de Execução</h3>
-            <p class="diff-desc">Peças prontas e curadas em fábrica. Instalação em dias, não em meses, sem entulho, formas de madeira ou bagunça no canteiro.</p>
-          </div>
-
-          <div class="diff-card">
-            <div class="diff-icon-box">
-              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-            </div>
-            <h3 class="diff-title">Liberdade Volumétrica Total</h3>
-            <p class="diff-desc">Curvas, cornijas pronunciadas, sancas invertidas para iluminação indireta e formatos sob medida desenhados pelo arquiteto.</p>
-          </div>
-
-          <div class="diff-card">
-            <div class="diff-icon-box">
-              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <h3 class="diff-title">Valorização de Alto Padrão</h3>
-            <p class="diff-desc">Imóveis com fachadas escultóricas e texturas nobres de pátina alcançam maior liquidez e valor de metro quadrado no mercado.</p>
-          </div>
+        <div class="diff-item">
+          <div class="diff-icon">✨</div>
+          <h4>Artesanal &amp; Exclusivo</h4>
+          <p>Fórmulas de Pedra Pátina e Cubas esculpidas à mão que proporcionam peças únicas e personalizadas.</p>
         </div>
       </div>
     </section>
 
-    <!-- CONTATO & ORÇAMENTO -->
-    <section class="section-wrap section-contato" id="contato">
-      <div class="container-wide">
-        <div class="contato-grid">
-          <div class="contato-info">
-            <div>
-              <span class="eyebrow">Atendimento & Fábrica</span>
-              <h2 class="section-title">Inicie o seu projeto conosco</h2>
-              <p class="section-desc" style="color: var(--text-muted); margin-bottom: 2rem;">
-                Envie a planta de sua fachada ou agende uma visita técnica da equipe ORION em sua obra. Atendemos Mineiros, Chapadão do Céu, Jataí e todo o Sudoeste Goiano.
-              </p>
-            </div>
+    <!-- Contato & Orçamento -->
+    <section id="contato" class="contact-surface">
+      <div class="section-wrap">
+        <div class="contact-grid">
+          <div>
+            <span class="eyebrow">Inicie Seu Projeto</span>
+            <h2 class="title-serif">Vamos construir uma arquitetura marcante juntos</h2>
+            <p style="color: var(--text-silver); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">
+              Nossa equipe técnica atende arquitetos, construtores e proprietários em Goiás e em todo o Brasil. Envie sua planta ou solicite a visita de um especialista técnico.
+            </p>
 
-            <div class="contato-item">
-              <div class="contato-item-icon">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <div class="contact-detail-box">
+              <div class="contact-item">
+                <span class="contact-icon">📞</span>
+                <div>
+                  <div class="contact-label">Telefones &bull; Atendimento Comercial</div>
+                  <div><a href="tel:64996442188" class="contact-val">(64) 99644-2188</a></div>
+                  <div><a href="tel:64999738151" class="contact-val">(64) 99973-8151</a></div>
+                </div>
               </div>
-              <div>
-                <div class="contato-item-label">Localização da Fábrica</div>
-                <div class="contato-item-val">Mineiros — Goiás, Brasil</div>
-                <div class="contato-item-sub">Distrito Industrial / Atendimento com agendamento prévio</div>
-              </div>
-            </div>
 
-            <div class="contato-item">
-              <div class="contato-item-icon">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <div class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <div>
+                  <div class="contact-label">E-mail Institucional</div>
+                  <a href="mailto:contato@orioneps.com.br" class="contact-val">contato@orioneps.com.br</a>
+                </div>
               </div>
-              <div>
-                <div class="contato-item-label">Correio Eletrônico</div>
-                <a href="mailto:contato@orioneps.com.br" class="contato-item-val">contato@orioneps.com.br</a>
-                <div class="contato-item-sub">Envio de projetos e memoriais descritivos</div>
-              </div>
-            </div>
 
-            <div class="contato-item">
-              <div class="contato-item-icon">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <div>
+                  <div class="contact-label">Sede Fabril &bull; Distribuição</div>
+                  <div style="color: #FFFFFF; font-weight: 500;">Mineiros — GO &bull; Brasil</div>
+                </div>
               </div>
-              <div>
-                <div class="contato-item-label">Horário de Operação</div>
-                <div class="contato-item-val">Segunda a Sexta: 07h30 às 17h30</div>
-                <div class="contato-item-sub">Sábados: Plantão técnico para arquitetos mediante solicitação</div>
+
+              <div class="contact-item">
+                <span class="contact-icon">⏰</span>
+                <div>
+                  <div class="contact-label">Horário de Operação</div>
+                  <div style="color: #FFFFFF; font-weight: 500;">Segunda a Sexta — 7h30 às 17h30</div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="contato-box-cta">
-            <span class="eyebrow">Canal Direto WhatsApp</span>
-            <h3>Fale com um Especialista</h3>
-            <p>
-              Nossa equipe técnica analisa sua planta em DWG ou PDF e apresenta o comparativo de peso, economia estrutural e o catálogo de peças Pátina.
-            </p>
-
-            <div class="phones-list">
-              <div class="phone-row">
-                <span>Engenharia & Obras:</span>
-                <a href="tel:64996442188">(64) 99644-2188</a>
+          <div class="form-panel">
+            <h3 class="title-serif" style="color: #FFFFFF; font-size: 1.5rem; margin-top: 0; margin-bottom: 0.5rem;">Solicitação Expressa</h3>
+            <p style="color: var(--text-silver); font-size: 0.9rem; margin-bottom: 1.5rem;">Preencha para falar diretamente com nosso departamento de orçamentos via WhatsApp.</p>
+            
+            <form id="leadForm" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="nome">Seu Nome / Empresa</label>
+                <input type="text" id="nome" class="form-control" placeholder="Ex: Roberto Castro" required>
               </div>
-              <div class="phone-row">
-                <span>Comercial & Projetos:</span>
-                <a href="tel:64999738151">(64) 99973-8151</a>
-              </div>
-            </div>
 
-            <!-- Botão WhatsApp Obrigatório -->
-            <a href="https://api.whatsapp.com/send?phone=5562995413236&text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ORION%20e%20gostaria%20de%20um%20or%C3%A7amento." 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="btn-whatsapp-large">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
-              Solicitar orçamento via WhatsApp
-            </a>
+              <div class="form-group">
+                <label for="cidade">Cidade / Estado</label>
+                <input type="text" id="cidade" class="form-control" placeholder="Ex: Mineiros - GO" required>
+              </div>
+
+              <div class="form-group">
+                <label for="interesse">Produto de Interesse</label>
+                <select id="interesse" class="form-control">
+                  <option value="Pedra Pátina Natural / Ferrugem">Pedra Pátina (Natural / Ferrugem)</option>
+                  <option value="Cubas e Pias Artesanais">Cubas e Pias Artesanais</option>
+                  <option value="Molduras, Sancas e Platibandas">Molduras, Sancas e Platibandas em EPS</option>
+                  <option value="Volumetrias com LED e Painéis">Volumetrias com LED &amp; Painéis</option>
+                  <option value="Projeto Completo de Fachada">Projeto Completo de Fachada</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="mensagem">Detalhes do Projeto (Opcional)</label>
+                <textarea id="mensagem" rows="3" class="form-control" placeholder="Fale sobre metragem aproximada, prazo ou dúvidas técnicas..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-amber" style="width: 100%; justify-content: center; padding: 0.9rem; font-size: 0.9rem;">
+                Enviar via WhatsApp
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- RODAPÉ CARBONO -->
+  <!-- Rodapé Carbono -->
   <footer class="site-footer">
-    <div class="container-wide">
-      <div class="footer-top">
-        <div>
-          <a href="#inicio" class="brand-logo" aria-label="ORION Soluções Arquitetônicas">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="2" y="2" width="44" height="44" stroke="#2B2B2B" stroke-width="1.2" fill="#0F1B3D"/>
-              <line x1="8" y1="40" x2="40" y2="8" stroke="#F59E0B" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
-              <line x1="12" y1="36" x2="36" y2="12" stroke="#FFFFFF" stroke-width="1.2" opacity="0.7"/>
-              <circle cx="16" cy="32" r="3.2" fill="#FFFFFF"/>
-              <circle cx="24" cy="24" r="4.2" fill="#F59E0B"/>
-              <circle cx="32" cy="16" r="3.2" fill="#FFFFFF"/>
-            </svg>
-            <div class="brand-title">
-              <span class="brand-name">ORION</span>
-              <span class="brand-sub">Soluções em EPS &bull; Pátina</span>
-            </div>
-          </a>
-          <p class="footer-brand-desc">
-            Indústria especializada em molduras, sancas e elementos tridimensionais em EPS de alta densidade e revestimentos cimentícios artesanais Pedra Pátina.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">Navegação</h4>
-          <ul class="footer-links">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre">Nossa Indústria</a></li>
-            <li><a href="#produtos">Catálogo de Produtos</a></li>
-            <li><a href="#projetos">Portfólio de Obras</a></li>
-            <li><a href="#processo">Método Construtivo</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">Soluções</h4>
-          <ul class="footer-links">
-            <li><a href="#produtos">Pedra Pátina Natural</a></li>
-            <li><a href="#produtos">Pedra Pátina Ferrugem</a></li>
-            <li><a href="#produtos">Molduras e Requadros</a></li>
-            <li><a href="#produtos">Volumetrias com LED</a></li>
-            <li><a href="#produtos">Projetos Sob Medida</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">Contato & Fábrica</h4>
-          <ul class="footer-links">
-            <li>Mineiros — Goiás</li>
-            <li>(64) 99644-2188</li>
-            <li>(64) 99973-8151</li>
-            <li>contato@orioneps.com.br</li>
-            <li>Segunda a Sexta: 07h30 &ndash; 17h30</li>
-          </ul>
-        </div>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <!-- Logo ORION -->
+        <svg width="154" height="38" viewBox="0 0 154 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="9" cy="27" r="2.2" fill="#C0C5CE"/>
+          <circle cx="19" cy="19" r="2.6" fill="#F59E0B"/>
+          <circle cx="29" cy="11" r="2.2" fill="#C0C5CE"/>
+          <line x1="9" y1="27" x2="19" y2="19" stroke="#0F1B3D" stroke-width="1.4"/>
+          <line x1="19" y1="19" x2="29" y2="11" stroke="#0F1B3D" stroke-width="1.4"/>
+          <text x="44" y="27" font-family="'Cinzel', 'Inter', serif" font-size="21" font-weight="700" letter-spacing="4" fill="#FFFFFF">ORION</text>
+        </svg>
+        <p style="font-weight: 500; color: #FFFFFF; margin-bottom: 0.35rem;">Soluções Arquitetônicas em EPS</p>
+        <p style="font-size: 0.85rem; color: #A0A5B0;">
+          Pioneirismo em EPS resinado, revestimentos cimentícios de pátina mineral e cubas artesanais de alto padrão em Mineiros-GO.
+        </p>
       </div>
 
-      <div class="footer-bottom">
-        <div>
-          &copy; <span id="currentYear"></span> ORION Soluções Arquitetônicas em EPS. Todos os direitos reservados.
-        </div>
-        <div class="footer-disclaimer">
-          Projeto fictício de demonstração &mdash; Adapta ONE
-        </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#produtos">Produtos &amp; Biografias</a></li>
+          <li><a href="#obras">Álbuns de Obras</a></li>
+          <li><a href="#album-cubas">Novo Álbum Cubas</a></li>
+          <li><a href="#producao">Produção Artesanal</a></li>
+          <li><a href="#projetos">Galeria de Projetos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Soluções</h5>
+        <ul>
+          <li><a href="#produtos">Pedra Pátina Natural</a></li>
+          <li><a href="#produtos">Pedra Pátina Ferrugem</a></li>
+          <li><a href="#album-cubas">Cubas em Cimento CP5</a></li>
+          <li><a href="#produtos">Molduras e Platibandas</a></li>
+          <li><a href="#produtos">Volumetrias com LED</a></li>
+          <li><a href="#produtos">Projetos Sob Medida</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Atendimento</h5>
+        <ul>
+          <li><a href="tel:64996442188">(64) 99644-2188</a></li>
+          <li><a href="tel:64999738151">(64) 99973-8151</a></li>
+          <li><a href="mailto:contato@orioneps.com.br">contato@orioneps.com.br</a></li>
+          <li style="color: #FFFFFF;">Mineiros - GO &bull; Brasil</li>
+          <li style="color: #A0A5B0; font-size: 0.8rem;">Seg–Sex: 7h30 às 17h30</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        &copy; <span id="currentYear">2026</span> ORION Soluções Arquitetônicas em EPS. Todos os direitos reservados.
+      </div>
+      <div class="disclaimer-badge">
+        Projeto fictício de demonstração — Adapta ONE
       </div>
     </div>
   </footer>
 
-  <!-- LIGHTBOX TELA CHEIA (COM BIOGRAFIA DAS PEÇAS) -->
-  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
-    <button class="lightbox-close-btn" id="lightboxClose" aria-label="Fechar biografia (ESC)">
-      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-
-    <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Peça anterior">
-      <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-    </button>
-    <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Próxima peça">
-      <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </button>
-
-    <div class="lightbox-container" id="lightboxContainer">
-      <div class="lightbox-visual">
-        <img id="lbImage" src="" alt="">
+  <!-- LIGHTBOX MODAL: BIOGRAFIAS DOS PRODUTOS (4 CAMPOS OBRIGATÓRIOS) -->
+  <div class="modal-overlay" id="bioModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeBioModal()" aria-label="Fechar modal">&times;</button>
+      <div class="bio-modal-header">
+        <span class="eyebrow" id="bioEyebrow">Biografia de Produto</span>
+        <h3 id="bioTitle" class="title-serif">Nome do Produto</h3>
+        <p id="bioSubtitle" style="color: var(--text-silver); margin: 0; font-size: 0.95rem;">Descrição sucinta do elemento.</p>
       </div>
-      <div class="lightbox-panel">
-        <div class="lightbox-header">
-          <div class="lightbox-category" id="lbCategory">Biografia da Peça</div>
-          <h2 class="lightbox-title" id="lbTitle">Título do Produto</h2>
+      <div class="bio-body">
+        <!-- 1. Porque do nome -->
+        <div class="bio-field">
+          <div class="bio-field-label">01. Por que do nome</div>
+          <p class="bio-field-text" id="bioFieldNome"></p>
         </div>
-        <div class="bio-fields">
-          <div class="bio-field">
-            <span class="bio-label">Por que do Nome</span>
-            <p class="bio-value" id="lbNome">-</p>
-          </div>
-          <div class="bio-field">
-            <span class="bio-label">Referência Arquitetônica</span>
-            <p class="bio-value" id="lbReferencia">-</p>
-          </div>
-          <div class="bio-field">
-            <span class="bio-label">Período Histórico</span>
-            <p class="bio-value" id="lbPeriodo">-</p>
-          </div>
-          <div class="bio-field">
-            <span class="bio-label">Processo de Fabricação</span>
-            <p class="bio-value" id="lbFabricacao">-</p>
-          </div>
+
+        <!-- 2. Referência -->
+        <div class="bio-field">
+          <div class="bio-field-label">02. Referência Arquitetônica</div>
+          <p class="bio-field-text" id="bioFieldRef"></p>
         </div>
-        <div class="lightbox-actions">
-          <a id="lbCtaWhatsapp" href="https://api.whatsapp.com/send?phone=5562995413236&text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ORION%20e%20gostaria%20de%20um%20or%C3%A7amento." 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="btn-amber" 
-             style="width: 100%; justify-content: center;">
-            Solicitar orçamento desta peça
-          </a>
+
+        <!-- 3. Período Histórico -->
+        <div class="bio-field">
+          <div class="bio-field-label">03. Período Histórico / Inspiração</div>
+          <p class="bio-field-text" id="bioFieldPeriodo"></p>
         </div>
+
+        <!-- 4. Fabricação -->
+        <div class="bio-field">
+          <div class="bio-field-label">04. Processo de Fabricação</div>
+          <p class="bio-field-text" id="bioFieldFabricacao"></p>
+        </div>
+      </div>
+      <div style="padding: 1.5rem 2.5rem; background: var(--surface-carbon-alt); border-top: 1px solid var(--border-carbon); display: flex; justify-content: flex-end;">
+        <a id="bioWhatsappLink" 
+           href="https://wa.me/5562995413236?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ORION%20e%20gostaria%20de%20um%20or%C3%A7amento." 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn-amber">
+           Consultar Aplicação na Minha Obra
+        </a>
       </div>
     </div>
   </div>
 
+  <!-- LIGHTBOX MODAL: AMPLIADOR DE IMAGENS DAS OBRAS E PROJETOS -->
+  <div class="modal-overlay" id="photoModal" role="dialog" aria-modal="true" aria-hidden="true" onclick="closePhotoModal(event)">
+    <div class="photo-modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closePhotoModalDirect()" aria-label="Fechar visualização">&times;</button>
+      <img id="photoModalSrc" src="" alt="Ampliação de Projeto ORION" class="photo-modal-img">
+      <div class="photo-modal-caption" id="photoModalText"></div>
+    </div>
+  </div>
+
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Atualiza ano corrente
-      const yearEl = document.getElementById('currentYear');
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    // Atualização de ano corrente
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-      // MENU MOBILE TOGGLE
-      const menuToggle = document.getElementById('menuToggle');
-      const navLinks = document.getElementById('navLinks');
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-          const isOpen = navLinks.classList.toggle('open');
-          menuToggle.setAttribute('aria-expanded', String(isOpen));
-        });
+    // Menu Mobile Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-        navLinks.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
 
-      // CATÁLOGO DE PRODUTOS COM BIOGRAFIAS OFICIAIS
-      const productsData = [
-        {
-          id: 'patina-natural',
-          title: 'Pedra Pátina Natural',
-          tag: 'Revestimento Artesanal',
-          summary: 'Placas cimentícias moldadas a partir do moledo natural de 87×43,5 cm, conservando a sobriedade atemporal do cimento CP5 sem reagente.',
-          image: 'WhatsApp_Image4_2026-09-22_at_15.58.33.jpeg',
-          bio: {
-            nome: '"Pátina" vem do latim "patina", a película que o tempo deposita suavemente sobre materiais nobres. Representa a dignidade da matéria mineral exposta aos elementos.',
-            referencia: 'Pedra moledo natural (rocha granítica decomposta por milhares de anos) e revestimentos cimentícios de alto padrão em arquitetura contemporânea.',
-            periodo: 'Diálogo entre o classicismo (a solidez tátil da pedra bruta) e o modernismo contemporâneo (a sobriedade minimalista e monocromática).',
-            fabricacao: 'Moldada em forma de pedra natural moledo no padrão 87×43,5 cm com cimento de alta resistência inicial CP5, curada sob umidade controlada, na cor mineral natural do cimento, sem reagente químico.'
-          }
-        },
-        {
-          id: 'patina-ferrugem',
-          title: 'Pedra Pátina Ferrugem',
-          tag: 'Oxidação Controlada',
-          summary: 'Revestimento mineral vivo que evolui com reagentes de efeito aço corten, tons de cobre, ferrugem e verde mineral aplicados nos veios.',
-          image: 'WhatsApp_Image2_2026-09-22_at_15.51.03.jpeg',
-          bio: {
-            nome: 'Oxidação controlada criada por reagentes químicos exclusivos com efeito aço corten, manchando a peça com tons terrosos de ferrugem, cobre e verde — uma pátina viva que evolui organicamente.',
-            referencia: 'Aço corten, que "enferruja de propósito" para criar sua própria pátina protetora, e a oxidação mineral natural observada em rochas ricas em ferro na Chapada dos Veadeiros.',
-            periodo: 'Estética industrial e brutalista do século XX, ressignificada pela arquitetura residencial de luxo brasileira contemporânea.',
-            fabricacao: 'Base em cimento CP5 estruturado + infusão manual de reagentes de oxidação direta nos veios e reentrâncias da placa; versão aplicada nas casas de alto padrão mais valorizadas de Goiás.'
-          }
-        },
-        {
-          id: 'molduras-requadros',
-          title: 'Molduras e Requadros',
-          tag: 'EPS Estrutural',
-          summary: 'Perfis de esquadria e emolduramento com corte CNC de extrema precisão, revestidos com argamassa polimérica sem juntas aparentes.',
-          image: 'https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-50-325Z_Original_user_intent_Close_up_architectural_detai.png',
-          bio: {
-            nome: 'Do italiano "modanatura", o perfil contínuo que emoldura, delimita e protege os vãos das esquadrias da fachada contra escorrimento de águas pluviais.',
-            referencia: 'Entablamentos e arquitraves clássicos greco-romanos, aplicados para gerar hierarquia e sombra refinada nas janelas e portas.',
-            periodo: 'Origem na Grécia e Roma antigas, resgatada com rigor pelo Renascimento europeu e pelo Neoclassicismo.',
-            fabricacao: 'Núcleo em EPS de alta densidade cortado em maquinário com fio aquecido de precisão milimétrica, revestido com dupla camada de argamassa polimérica acrílica e tela de fibra de vidro anti-fissuras.'
-          }
-        },
-        {
-          id: 'sancas-platibandas',
-          title: 'Sancas e Platibandas',
-          tag: 'EPS Estrutural',
-          summary: 'Fechamentos de telhado e cornijas leves que ocultam caimentos com até 90% menos peso que o concreto armado convencional.',
-          image: 'https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-162Z_Original_user_intent_Architectural_detail_shot_of.png',
-          bio: {
-            nome: '"Sanca" tem raiz no árabe "saqifah" (cobertura/saliência); "platibanda" designa o parapeito horizontal que resguarda a edificação e oculta elegantemente a inclinação do telhado.',
-            referencia: 'A cornija clássica e os beirais horizontais do modernismo brutalista de Brasília.',
-            periodo: 'Greco-romano, Renascimento italiano e Barroco, revisitada pela arquitetura contemporânea para ocultação de coberturas em linhas retas.',
-            fabricacao: 'Blocos estruturados em EPS antichamas, com encaixes macho-fêmea usinados em fábrica, recebendo selagem elastomérica especial para suportar incidência solar direta sem deformação.'
-          }
-        },
-        {
-          id: 'volumetrias-led',
-          title: 'Volumetrias com LED',
-          tag: 'Luminotécnica Integrada',
-          summary: 'Volumes tridimensionais esculpidos para abrigar fitas LED invisíveis que transformam fachadas noturnas em verdadeiras esculturas de luz.',
-          image: 'https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-54-832Z_Original_user_intent_Night_architectural_detail_s.png',
-          bio: {
-            nome: 'A arte de projetar volumes tridimensionais vivos; a cavidade com LED embutido transforma o elemento rígido em escultura de luz e sombras rasantes à noite.',
-            referencia: 'Grandes fachadas do modernismo paulista integradas ao design luminotécnico cênico contemporâneo.',
-            periodo: 'Modernismo do século XX e evolução do Art Déco às arquiteturas high-tech contemporâneas.',
-            fabricacao: 'EPS esculpido com perfil de canaleta e rebaixo perfeitamente vedado contra intempéries, preparado para assentamento de difusor em policarbonato e fita LED IP67 de alta performance.'
-          }
-        },
-        {
-          id: 'colunas-capiteis',
-          title: 'Colunas e Capitéis',
-          tag: 'EPS Estrutural',
-          summary: 'Ordens clássicas reinterpretadas em material ultraleve: imponência estética sem sobrecarga em baldrames e estacas.',
-          image: 'https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-11-49-496Z_Original_user_intent_Architectural_detail_shot_of.png',
-          bio: {
-            nome: 'Do latim "columna" (sustentação cilíndrica) e "capitellum" (pequena cabeça, o coroamento que recebe a carga superior).',
-            referencia: 'As ordens clássicas gregas (Dórica, Jônica e Coríntia) reinterpretadas para pórticos majestosos em condomínios fechados.',
-            periodo: 'Grécia Antiga (século V a.C.), Renascimento e os imponentes palacetes do Neoclassicismo.',
-            fabricacao: 'Segmentos de EPS estrutural cortados em gabaritos cônicos e cilíndricos perfeitos, envelopados com pasta de microcimento mineral reforçado com polímeros resistentes a impactos.'
-          }
-        },
-        {
-          id: 'paineis-texturas',
-          title: 'Painéis e Texturas',
-          tag: 'Painel 3D',
-          summary: 'Superfícies de relevo geométrico ou orgânico contínuo para halls monumentais, fachadas cegas e áreas gourmets de prestígio.',
-          image: 'https://generated-images.adapta.one/danie0az%40icloud.com/019ffc86-d305-7599-a96a-a3aef310e00e/2026-09-23T18-17-36-649Z_Original_user_intent_Architectural_detail_shot_of.png',
-          bio: {
-            nome: '"Painel" representa a superfície ampla que reveste e delimita; "textura" deriva da qualidade tátil que quebra a monotonia da parede lisa.',
-            referencia: 'Revestimentos tridimensionais decorativos, cobogós modernos e o brutalismo geométrico dos anos 70.',
-            periodo: 'Do Art Déco ao design arquitetônico biofílico contemporâneo.',
-            fabricacao: 'Usinagem tridimensional computadorizada sobre placas espessas de EPS, seguida de tratamento mineral com grânulos de sílica e calcário que garantem rigidez e absorção acústica.'
-          }
-        },
-        {
-          id: 'projetos-sob-medida',
-          title: 'Projetos Sob Medida',
-          tag: 'Artesanato & Engenharia',
-          summary: 'Cada peça esculpida a partir da prancha do arquiteto. Acompanhamento integral da ORION da modelagem digital ao assentamento na obra.',
-          image: 'WhatsApp_Image3_2026-09-22_at_15.51.03.jpeg',
-          bio: {
-            nome: 'Personalização absoluta: cada peça nasce exclusivamente do traço autoral do arquiteto e das dimensões físicas reais da edificação.',
-            referencia: 'A tradição das oficinas de cantaria e artesanato arquitetônico de alto padrão adaptadas à tecnologia construtiva limpa.',
-            periodo: 'Dos mestres artífices do Renascimento à vanguarda da arquitetura paramétrica contemporânea.',
-            fabricacao: 'Do arquivo CAD/BIM à fabricação de gabaritos especiais na fábrica em Mineiros, com acompanhamento e instalação assistida pela equipe técnica especializada da ORION.'
-          }
-        }
-      ];
-
-      // RENDERIZAÇÃO DOS CARDS DE PRODUTO
-      const grid = document.getElementById('productsGrid');
-      if (grid) {
-        productsData.forEach((item, index) => {
-          const card = document.createElement('div');
-          card.className = 'product-card';
-          card.setAttribute('role', 'button');
-          card.setAttribute('tabindex', '0');
-          card.setAttribute('data-index', String(index));
-          card.innerHTML = `
-            <div class="product-img-wrap">
-              <img src="${item.image}" alt="${item.title}" loading="lazy">
-              <span class="product-tag">${item.tag}</span>
-            </div>
-            <div class="product-body">
-              <h3 class="product-title">${item.title}</h3>
-              <p class="product-summary">${item.summary}</p>
-              <button type="button" class="btn-bio" aria-label="Ver biografia de ${item.title}">
-                Ver Biografia
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
-      }
-
-      // LIGHTBOX LOGIC
-      let currentIndex = 0;
-      const modal = document.getElementById('lightboxModal');
-      const lbImage = document.getElementById('lbImage');
-      const lbTitle = document.getElementById('lbTitle');
-      const lbNome = document.getElementById('lbNome');
-      const lbReferencia = document.getElementById('lbReferencia');
-      const lbPeriodo = document.getElementById('lbPeriodo');
-      const lbFabricacao = document.getElementById('lbFabricacao');
-      const lbCategory = document.getElementById('lbCategory');
-      const lbClose = document.getElementById('lightboxClose');
-      const lbPrev = document.getElementById('lightboxPrev');
-      const lbNext = document.getElementById('lightboxNext');
-      const lbCta = document.getElementById('lbCtaWhatsapp');
-
-      function openLightbox(index) {
-        currentIndex = (index + productsData.length) % productsData.length;
-        const item = productsData[currentIndex];
-        if (!item) return;
-
-        lbImage.src = item.image;
-        lbImage.alt = item.title;
-        lbTitle.textContent = item.title;
-        lbCategory.textContent = `Biografia da Peça &bull; ${item.tag}`;
-        lbNome.textContent = item.bio.nome;
-        lbReferencia.textContent = item.bio.referencia;
-        lbPeriodo.textContent = item.bio.periodo;
-        lbFabricacao.textContent = item.bio.fabricacao;
-
-        const encodedMsg = encodeURIComponent(`Olá! Vim pelo site da ORION e gostaria de um orçamento da peça: ${item.title}.`);
-        lbCta.href = `https://api.whatsapp.com/send?phone=5562995413236&text=${encodedMsg}`;
-
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        lbClose.focus();
-      }
-
-      function closeLightbox() {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      function nextItem() {
-        openLightbox(currentIndex + 1);
-      }
-
-      function prevItem() {
-        openLightbox(currentIndex - 1);
-      }
-
-      // Eventos dos cards de produto
-      if (grid) {
-        grid.addEventListener('click', (e) => {
-          const card = e.target.closest('.product-card');
-          if (card) {
-            const index = parseInt(card.getAttribute('data-index') || '0', 10);
-            openLightbox(index);
-          }
-        });
-
-        grid.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            const card = e.target.closest('.product-card');
-            if (card) {
-              e.preventDefault();
-              const index = parseInt(card.getAttribute('data-index') || '0', 10);
-              openLightbox(index);
-            }
-          }
-        });
-      }
-
-      // Projetos também abrem detalhes no lightbox
-      const projectMapping = {
-        'villa': 3, // sancas/platibandas
-        'ipes': 1,  // pátina ferrugem
-        'aurora': 4, // volumetrias led
-        'sobrado': 2, // molduras
-        'viasul': 0 // pátina natural
-      };
-
-      document.querySelectorAll('.project-card').forEach(card => {
-        const pKey = card.getAttribute('data-project');
-        card.addEventListener('click', () => {
-          if (pKey && projectMapping[pKey] !== undefined) {
-            openLightbox(projectMapping[pKey]);
-          } else {
-            openLightbox(0);
-          }
-        });
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            if (pKey && projectMapping[pKey] !== undefined) {
-              openLightbox(projectMapping[pKey]);
-            } else {
-              openLightbox(0);
-            }
-          }
-        });
-      });
-
-      // Controles do Lightbox
-      lbClose.addEventListener('click', closeLightbox);
-      lbNext.addEventListener('click', (e) => { e.stopPropagation(); nextItem(); });
-      lbPrev.addEventListener('click', (e) => { e.stopPropagation(); prevItem(); });
-
-      // Clique fora para fechar
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          closeLightbox();
-        }
-      });
-
-      // Teclas de atalho (ESC, setas)
-      window.addEventListener('keydown', (e) => {
-        if (!modal.classList.contains('active')) return;
-        if (e.key === 'Escape') {
-          closeLightbox();
-        } else if (e.key === 'ArrowRight') {
-          nextItem();
-        } else if (e.key === 'ArrowLeft') {
-          prevItem();
-        }
+    // Fechar menu mobile ao clicar num link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
       });
     });
+
+    // Dados Fiéis e Consistentes das Biografias dos 8 Produtos
+    const productBios = {
+      'patina-natural': {
+        title: 'Pedra Pátina Natural',
+        subtitle: 'A nobreza sutil das rochas sedimentares com textura monolítica.',
+        nome: 'O nome "Pátina Natural" faz alusão ao envelhecimento harmonioso das pedras calcárias e mármores brutos expostos à brisa mineral ao longo dos séculos, preservando a claridade autêntica sem parecer artificial.',
+        ref: 'Inspirada nos palácios da Toscana e nas encostas calcárias do Mediterrâneo, onde a rocha clara absorve a luz do sol criando sombras aveludadas.',
+        periodo: 'Renascimento italiano e arquitetura vernacular mediterrânea, mesclada ao minimalismo brutalista contemporâneo.',
+        fabricacao: 'Formulação exclusiva à base de cimento branco estrutural, areias de quartzo de granulometria selecionada e resinas poliméricas flexíveis aplicadas sobre o substrato de EPS moldado, com queima manual e cura úmida por 72 horas.'
+      },
+      'patina-ferrugem': {
+        title: 'Pedra Pátina Ferrugem',
+        subtitle: 'A força dos óxidos minerais e tons terracota do cerrado goiano.',
+        nome: 'Denominada "Pátina Ferrugem" pela infusão de pigmentos de óxido de ferro ativados, conferindo tonalidades que transitam entre o âmbar queimado, o ocre e o aço corten envelhecido com textura táctil.',
+        ref: 'Remete às formações rochosas ferruginosas da Chapada dos Guimarães e às chapas oxidadas da arquitetura contemporânea internacional de Carlo Scarpa e Olson Kundig.',
+        periodo: 'Modernismo industrial tardio e arquitetura biofílica contemporânea de matizes terrosas.',
+        fabricacao: 'Base cimentícia pigmentada em massa adicionada de pátinas reagentes superficiais aplicadas artesanalmente com brocha e esponja marinha, finalizada com hidrofugante nanotecnológico impermeabilizante.'
+      },
+      'molduras': {
+        title: 'Molduras e Requadros',
+        subtitle: 'Linearidade perfeita e encaixe milimétrico para vãos arquitetônicos.',
+        nome: '"Molduras e Requadros" designa os perfis que delimitam e emolduram as aberturas do edifício, resgatando a função histórica de guarnição protetora e valorização da proporção áurea das janelas.',
+        ref: 'Cornijas e ombreiras clássicas de Palladio adaptadas para os traços puros e cantos vivos da arquitetura de luxo contemporânea.',
+        periodo: 'Tradição Clássica greco-romana reinterpretada com precisão na era da manufatura digital CNC.',
+        fabricacao: 'Blocos de EPS Isopor® classe F (autoextinguível) de alta densidade cortados em máquina CNC com fio de níquel-cromo, revestidos mecanicamente com argamassa cimentícia armada por dupla tela de fibra de vidro de 145g/m².'
+      },
+      'sancas': {
+        title: 'Sancas e Platibandas',
+        subtitle: 'Coroamentos monumentais que esculpem a linha do horizonte da fachada.',
+        nome: '"Platibanda" e "Sanca" originam-se dos termos da cantaria renascentista para coroamentos que ocultam os telhados e telhas, garantindo a volumetria limpa e monumental dos edifícios modernos.',
+        ref: 'Arquitetura moderna brasileira de Oscar Niemeyer e Ruy Ohtake, somada aos beirais esculpidos de vilas de alto padrão.',
+        periodo: 'Evolução da arquitetura eclética e consolidação do modernismo no século XX.',
+        fabricacao: 'Módulos autoportantes usinados com alívio interno estrutural, tela de ancoragem interna, camada externa de 4mm a 6mm de compósito cimentício polimérico resistente a ventos fortes e dilatações térmicas.'
+      },
+      'volumetrias-led': {
+        title: 'Volumetrias com LED',
+        subtitle: 'A fusão da matéria sólida com o rasgo de luz cenográfica noturna.',
+        nome: 'O termo expressa a capacidade de gerar volumes tridimensionais vazados e negativos especialmente desenhados para alojar perfis difusores de iluminação indireta de alta eficiência.',
+        ref: 'Arquitetura luminotécnica de Tadao Ando e Frank Gehry, onde a luz não é apenas acessório, mas material construtivo fundamental.',
+        periodo: 'Arquitetura Contemporânea Hi-Tech do século XXI com foco em biofilia noturna e valorização de fachada.',
+        fabricacao: 'Usinagem tridimensional em 4 eixos com canaletas embutidas de alumínio e canal de fiação antichama integrados antes da aplicação do revestimento mineral hidrofugado.'
+      },
+      'colunas': {
+        title: 'Colunas e Capitéis',
+        subtitle: 'Solenidade e verticalidade estrutural sem peso de carga na fundação.',
+        nome: 'Derivado diretamente das ordens clássicas (Dórica, Jônica e Coríntia), conservando a imponência dos fustes sem a necessidade de guindastes pesados ou formas caras de madeira.',
+        ref: 'Pórticos dos templos de Atenas e palacetes neoclássicos da Belle Époque europeia e brasileira.',
+        periodo: 'Classicismo Imperial e Neoclássico adaptados à rapidez construtiva da construção a seco.',
+        fabricacao: 'Cascas bipartidas ou maciças em EPS usinado cilíndrico, que podem envelopar pilares de concreto armado existentes ou atuar como elementos decorativos autônomos, revestidos com pó de mármore e polímeros.'
+      },
+      'paineis': {
+        title: 'Painéis e Texturas',
+        subtitle: 'Superfícies de grande escala com relevos esculturais e movimento cinético.',
+        nome: '"Painéis e Texturas" sintetiza as grandes placas modulares desenhadas para envelopamento de paredes cegas, muros de destaque e entradas majestosas.',
+        ref: 'Azulejaria e murais de relevo de Athos Bulcão e os brises esculturais de Erwin Hauer.',
+        periodo: 'Arte cinética e organicismo arquitetônico dos anos 1960 ao presente.',
+        fabricacao: 'Prensagem e corte de chapas espessas de EPS laminadas com compósito de cimento CP5 microreforçado com microfibras sintéticas, garantindo altíssima resistência a impacto e intempéries.'
+      },
+      'sob-medida': {
+        title: 'Projetos Sob Medida',
+        subtitle: 'A materialização exata do traço mais audacioso do seu arquiteto.',
+        nome: '"Sob Medida" resume a vocação da ORION de não impor catálogo rígido: cada raio de curvatura, logotipo corporativo ou geometria paramétrica é produzido sob demanda.',
+        ref: 'Projetos icônicos de Zaha Hadid Architects e escritórios de vanguarda que desafiam os limites da linha reta.',
+        periodo: 'Arquitetura Paramétrica e Digital Contemporânea.',
+        fabricacao: 'Conversão de arquivos 3D (CAD/Revit/Rhino) em código G, usinagem multiaxial assistida por computador e finalização artesanal de acabamento nos padrões Pedra Pátina Natural, Ferrugem ou Cimento Queimado.'
+      }
+    };
+
+    // Funções do Lightbox de Biografia
+    function openBioModal(key) {
+      const data = productBios[key];
+      if (!data) return;
+
+      document.getElementById('bioTitle').textContent = data.title;
+      document.getElementById('bioSubtitle').textContent = data.subtitle;
+      document.getElementById('bioFieldNome').textContent = data.nome;
+      document.getElementById('bioFieldRef').textContent = data.ref;
+      document.getElementById('bioFieldPeriodo').textContent = data.periodo;
+      document.getElementById('bioFieldFabricacao').textContent = data.fabricacao;
+
+      const modal = document.getElementById('bioModal');
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBioModal() {
+      const modal = document.getElementById('bioModal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Funções do Lightbox de Fotos da Galeria e Obras
+    function openPhotoModal(src, caption) {
+      const modal = document.getElementById('photoModal');
+      const img = document.getElementById('photoModalSrc');
+      const text = document.getElementById('photoModalText');
+
+      img.src = src;
+      img.alt = caption;
+      text.textContent = caption;
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePhotoModalDirect() {
+      const modal = document.getElementById('photoModal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closePhotoModal(e) {
+      if (e.target.id === 'photoModal') {
+        closePhotoModalDirect();
+      }
+    }
+
+    // Fechar ao teclar Esc
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeBioModal();
+        closePhotoModalDirect();
+      }
+    });
+
+    // Form submission -> Redirecionamento amigável para o WhatsApp oficial da ORION
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const cidade = document.getElementById('cidade').value.trim();
+      const interesse = document.getElementById('interesse').value;
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      let texto = `Olá! Vim pelo site da ORION e gostaria de um orçamento.\n\n*Nome:* ${nome}\n*Cidade:* ${cidade}\n*Interesse:* ${interesse}`;
+      if (mensagem) {
+        texto += `\n*Detalhes:* ${mensagem}`;
+      }
+
+      const encoded = encodeURIComponent(texto);
+      const whatsappUrl = `https://wa.me/5562995413236?text=${encoded}`;
+      window.open(whatsappUrl, '_blank');
+    }
   </script>
 <script>
 /* Skip artifact shell — fixed helpers served beside every artifact. */
