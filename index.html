@@ -1,0 +1,27 @@
+<style>
+  /* Efeito de revelar aos poucos no fundo do site */
+  @keyframes heroReveal {
+    0%   { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  #inicio, .hero, section:first-of-type {
+    animation: heroReveal 2.5s ease-out forwards;
+  }
+</style>
+<script>
+(function(){
+  var alvo = null;
+  document.querySelectorAll('section, header, div').forEach(function(el){
+    var bg = getComputedStyle(el).backgroundImage;
+    if (bg && bg !== 'none' && el.getBoundingClientRect().height > window.innerHeight * 0.6 && !alvo) {
+      alvo = el;
+    }
+  });
+  if (alvo) {
+    alvo.style.backgroundImage = "url('fundosite.jpg')";
+    alvo.style.backgroundSize = 'cover';
+    alvo.style.backgroundPosition = 'center';
+    alvo.style.backgroundAttachment = 'fixed';
+  }
+})();
+</script>
