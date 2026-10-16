@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JF Higienização em estofados e geral</title>
+  <meta name="description" content="Higienização profissional de sofás, colchões, poltronas, cadeiras e estofados automotivos em Mineiros-GO e região. Há mais de 3 anos devolvendo vida e saúde aos seus móveis.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
+  <style>
+/* Skip artifact shell — fixed styles served beside every artifact.
+   Complements basecoat; artifacts override --accent for their own identity. */
+:root {
+  color-scheme: light dark;
+  --accent: #2563eb;
+  --accent-contrast: #ffffff;
+  --accent-text: color-mix(in srgb, var(--accent) 72%, #000);
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #14171f;
+  --text-muted: #5b6472;
+  --border: rgba(20, 23, 31, 0.10);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(20, 23, 31, 0.08);
+  --space: 16px;
+}
+/* Theme resolution. Without data-theme the viewer's system preference decides,
+   as it always did. With it, the artifact's own choice wins in BOTH directions:
+   a page that hardcodes one palette must not be handed the opposite set of
+   tokens by the machine it happens to be opened on. The dark values appear
+   twice because a media query cannot be folded into a selector list.
+   The attribute sits inside :where() so these blocks keep the specificity of a
+   bare :root — the page's own <style> is linked after this file and must go on
+   overriding any token it wants, exactly as it could before. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+    --bg: #101318;
+    --surface: #181c23;
+    --text: #eef1f6;
+    --text-muted: #9aa4b2;
+    --border: rgba(238, 241, 246, 0.12);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+:root:where([data-theme="dark"]) {
+  color-scheme: dark;
+  --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+  --bg: #101318;
+  --surface: #181c23;
+  --text: #eef1f6;
+  --text-muted: #9aa4b2;
+  --border: rgba(238, 241, 246, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+:root:where([data-theme="light"]) { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+
+.shell-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.shell-section { padding: calc(var(--space) * 2) 0; }
+.shell-grid { display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.shell-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: var(--space); }
+.shell-footer { padding: 24px 0 40px; color: var(--text-muted); font-size: 13px; }
+
+.shell-hero { padding: calc(var(--space) * 3) 0 calc(var(--space) * 2); }
+.shell-hero h1 { font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
+.shell-hero p { color: var(--text-muted); max-width: 60ch; margin: 0; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 4px; }
+.kpi .kpi-value { font-size: 28px; font-weight: 650; line-height: 1.1; }
+.kpi .kpi-label { font-size: 13px; color: var(--text-muted); }
+.kpi .kpi-delta { font-size: 12.5px; font-weight: 600; }
+.kpi .kpi-delta.up { color: #0a8f3c; }
+.kpi .kpi-delta.down { color: #cf3131; }
+
+table.shell-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.shell-table th {
+  text-align: left; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600;
+}
+table.shell-table th, table.shell-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--border); }
+table.shell-table td.num, table.shell-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+
+.chart-box { width: 100%; min-height: 220px; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+
+.muted { color: var(--text-muted); }
+.accent { color: var(--accent-text); }
+.shell-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shell-fade { animation: shell-fade 400ms ease both; }
+  @keyframes shell-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+</style>
+  
+  <style>
+    :root {
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --primary-blue: #0284c7;
+      --electric-cyan: #06b6d4;
+      --electric-blue: #2563eb;
+      --teal-light: #14b8a6;
+      --mint: #10b981;
+      --gold-glow: #f59e0b;
+      --navy: #0f172a;
+      --navy-light: #1e293b;
+      --cyan-soft: #f0f9ff;
+      --cyan-border: #bae6fd;
+      --badge-before: #e11d48;
+      --badge-after: #059669;
+      --whatsapp: #25D366;
+      --whatsapp-dark: #1ea952;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--navy);
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      padding: 0 1.25rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--navy);
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+    }
+
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
+
+    .logo-text span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .btn-whatsapp-nav {
+      background-color: var(--whatsapp);
+      color: #ffffff !important;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn-whatsapp-nav:hover {
+      background-color: var(--whatsapp-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section Animated Background & Bubbles */
+    .hero-section {
+      background: linear-gradient(135deg, #e0f2fe 0%, #e0f7fa 35%, #f0fdf4 70%, #ffffff 100%);
+      background-size: 260% 260%;
+      animation: gradientShift 14s ease infinite;
+      padding: 5.2rem 1.25rem 4rem;
+      text-align: center;
+      border-bottom: 1px solid #bae6fd;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Soap Bubbles Floating Upwards */
+    .bubbles-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(56, 189, 248, 0.35) 45%, rgba(6, 182, 212, 0.2) 80%, rgba(255, 255, 255, 0.6) 100%);
+      box-shadow: inset -2px -2px 6px rgba(2, 132, 199, 0.35), inset 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 12px rgba(56, 189, 248, 0.3);
+      backdrop-filter: blur(1px);
+      animation: floatUp 8s infinite ease-in;
+    }
+
+    .bubble::after {
+      content: '';
+      position: absolute;
+      top: 18%;
+      left: 22%;
+      width: 26%;
+      height: 26%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      filter: blur(0.5px);
+    }
+
+    .bubble-1 { width: 34px; height: 34px; left: 8%; animation-duration: 9s; animation-delay: 0s; }
+    .bubble-2 { width: 52px; height: 52px; left: 22%; animation-duration: 11s; animation-delay: 2s; }
+    .bubble-3 { width: 24px; height: 24px; left: 38%; animation-duration: 7.5s; animation-delay: 4.5s; }
+    .bubble-4 { width: 44px; height: 44px; left: 54%; animation-duration: 10s; animation-delay: 1s; }
+    .bubble-5 { width: 28px; height: 28px; left: 70%; animation-duration: 8.5s; animation-delay: 3.5s; }
+    .bubble-6 { width: 48px; height: 48px; left: 84%; animation-duration: 12s; animation-delay: 0.5s; }
+    .bubble-7 { width: 20px; height: 20px; left: 93%; animation-duration: 6.8s; animation-delay: 5s; }
+    .bubble-8 { width: 38px; height: 38px; left: 14%; animation-duration: 9.5s; animation-delay: 6s; }
+    .bubble-9 { width: 30px; height: 30px; left: 45%; animation-duration: 8.2s; animation-delay: 2.5s; }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.7);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.85;
+      }
+      85% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-750px) translateX(30px) scale(1.15);
+        opacity: 0;
+      }
+    }
+
+    /* Cleaning Sparkles Floating & Twinkling */
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      color: #06b6d4;
+      animation: sparkleTwinkle 3.2s infinite ease-in-out;
+      z-index: 1;
+      opacity: 0.75;
+    }
+
+    .sparkle-1 { top: 18%; left: 12%; animation-delay: 0.2s; font-size: 1.3rem; color: #0284c7; }
+    .sparkle-2 { top: 32%; right: 14%; animation-delay: 1.1s; font-size: 1.6rem; color: #0d9488; }
+    .sparkle-3 { top: 68%; left: 16%; animation-delay: 2s; font-size: 1.1rem; color: #f59e0b; }
+    .sparkle-4 { top: 78%; right: 20%; animation-delay: 0.7s; font-size: 1.4rem; color: #06b6d4; }
+    .sparkle-5 { top: 15%; right: 30%; animation-delay: 1.8s; font-size: 1rem; color: #2563eb; }
+
+    @keyframes sparkleTwinkle {
+      0%, 100% {
+        transform: scale(0.6) rotate(0deg);
+        opacity: 0.2;
+      }
+      50% {
+        transform: scale(1.25) rotate(45deg);
+        opacity: 0.95;
+        filter: drop-shadow(0 0 6px rgba(6, 182, 212, 0.8));
+      }
+    }
+
+    .hero-container {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Staggered Fade-in-up Entrance Animation */
+    .hero-animate-1 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: 0.1s; }
+    .hero-animate-2 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: 0.25s; }
+    .hero-animate-3 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: 0.4s; }
+    .hero-animate-4 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: 0.55s; }
+    .hero-animate-5 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: 0.7s; }
+
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Glowing Badge with subtle pulse */
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 0.45rem 1.15rem;
+      border-radius: 9999px;
+      margin-bottom: 1.35rem;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.32), 0 0 0 2px rgba(255, 255, 255, 0.7);
+      animation: badgeGlowPulse 2.8s infinite ease-in-out;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    @keyframes badgeGlowPulse {
+      0%, 100% {
+        box-shadow: 0 4px 16px rgba(2, 132, 199, 0.32), 0 0 0 2px rgba(255, 255, 255, 0.7);
+      }
+      50% {
+        box-shadow: 0 6px 24px rgba(6, 182, 212, 0.55), 0 0 0 4px rgba(186, 230, 253, 0.9);
+      }
+    }
+
+    .hero-title {
+      font-size: 2.85rem;
+      font-weight: 800;
+      line-height: 1.18;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+      margin: 0 0 1.35rem;
+    }
+
+    .hero-title-highlight {
+      background: linear-gradient(120deg, #0284c7, #06b6d4, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline;
+    }
+
+    .hero-subtitle {
+      font-size: 1.18rem;
+      color: #334155;
+      line-height: 1.65;
+      margin: 0 auto 2.35rem;
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* WhatsApp Button with swaying icon */
+    .btn-hero-primary {
+      background: linear-gradient(135deg, #25D366 0%, #1ea952 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.9rem 1.9rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hero-primary svg {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-hero-primary:hover {
+      background: linear-gradient(135deg, #2ae36f 0%, #179346 100%);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55), 0 0 16px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-hero-primary:hover svg {
+      transform: rotate(14deg) scale(1.12);
+      animation: whatsappWiggle 0.6s ease infinite alternate;
+    }
+
+    @keyframes whatsappWiggle {
+      0% { transform: rotate(-10deg) scale(1.1); }
+      100% { transform: rotate(14deg) scale(1.15); }
+    }
+
+    .btn-hero-secondary {
+      background: #ffffff;
+      color: #0369a1;
+      border: 2px solid #7dd3fc;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.9rem 1.75rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+    }
+
+    .btn-hero-secondary:hover {
+      background: #f0f9ff;
+      border-color: #0284c7;
+      color: #0284c7;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.2);
+    }
+
+    .btn-hero-secondary:hover svg {
+      transform: translateY(3px);
+    }
+    .btn-hero-secondary svg {
+      transition: transform 0.2s ease;
+    }
+
+    .hero-badges-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      margin-top: 2.85rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(186, 230, 253, 0.7);
+      color: #1e293b;
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .hero-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      border: 1px solid #bae6fd;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.08);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge-item svg {
+      color: #0284c7;
+      filter: drop-shadow(0 1px 3px rgba(2, 132, 199, 0.35));
+    }
+
+    /* Section Utilities with Alternating Vibrant Backgrounds */
+    .section-wrapper-white {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .section-wrapper-cyan {
+      background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdfa 100%);
+      border-top: 1px solid #bae6fd;
+      border-bottom: 1px solid #bae6fd;
+    }
+
+    .section-wrapper-blue {
+      background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .section {
+      padding: 5rem 1.25rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-tag {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.09em;
+      font-weight: 800;
+      color: #0284c7;
+      background: linear-gradient(135deg, #e0f2fe, #ccfbf1);
+      border: 1px solid #7dd3fc;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.12);
+    }
+
+    .section-title {
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.025em;
+      margin: 0.4rem 0 0.85rem;
+      line-height: 1.2;
+    }
+
+    .section-title-gradient {
+      background: linear-gradient(120deg, #0f172a 30%, #0284c7 70%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-desc {
+      font-size: 1.08rem;
+      color: #475569;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Services Grid & Vivid Cards */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 2rem 1.85rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.06);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0284c7, #06b6d4, #10b981);
+      opacity: 0.7;
+      transition: height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px -4px rgba(2, 132, 199, 0.18), 0 0 0 1px #38bdf8;
+      border-color: #38bdf8;
+    }
+
+    .service-card:hover::before {
+      height: 6px;
+      opacity: 1;
+    }
+
+    .service-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #e0f2fe 0%, #cffafe 100%);
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.35rem;
+      flex-shrink: 0;
+      border: 1px solid #bae6fd;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.14);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .service-card:hover .service-icon-box {
+      transform: scale(1.08) rotate(3deg);
+      background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.3);
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0 0 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* Differentiators Section */
+    .diferenciais-section {
+      background: linear-gradient(180deg, #f0fdfa 0%, #e0f2fe 60%, #ffffff 100%);
+      border-top: 1px solid #99f6e4;
+      border-bottom: 1px solid #bae6fd;
+      padding: 5rem 1.25rem;
+      position: relative;
+    }
+
+    .diferenciais-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+      margin-top: 2.75rem;
+    }
+
+    .diff-item {
+      background: #ffffff;
+      padding: 1.65rem;
+      border-radius: 14px;
+      border: 1px solid #ccfbf1;
+      display: flex;
+      gap: 1.15rem;
+      align-items: flex-start;
+      box-shadow: 0 4px 16px rgba(13, 148, 136, 0.08);
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .diff-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(13, 148, 136, 0.16);
+      border-color: #5eead4;
+    }
+
+    .diff-check {
+      background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+      color: #ffffff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35);
+      transition: transform 0.25s ease;
+    }
+
+    .diff-item:hover .diff-check {
+      transform: scale(1.1) rotate(6deg);
+    }
+
+    .diff-content h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .diff-content p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    /* Before & After Gallery (Serviços Realizados) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .before-after-card {
+      background: #ffffff;
+      border: 1px solid #bae6fd;
+      border-radius: 18px;
+      padding: 1.35rem;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .before-after-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 36px rgba(2, 132, 199, 0.18);
+      border-color: #38bdf8;
+    }
+
+    .photos-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      position: relative;
+    }
+
+    .photo-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background-color: #f1f5f9;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      outline: none;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, filter 0.3s ease;
+    }
+
+    .photo-wrapper:hover img {
+      transform: scale(1.08);
+      filter: brightness(1.04);
+    }
+
+    .zoom-hint {
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 132, 199, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      gap: 0.35rem;
+      pointer-events: none;
+    }
+
+    .photo-wrapper:hover .zoom-hint {
+      opacity: 1;
+    }
+
+    .label-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      border-radius: 8px;
+      text-transform: uppercase;
+      color: #ffffff;
+      z-index: 2;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    .badge-antes {
+      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .badge-depois {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 3px 10px rgba(16, 185, 129, 0.45);
+    }
+
+    .card-footer-info {
+      margin-top: 1.15rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.9rem;
+      border-top: 1px solid #e0f2fe;
+    }
+
+    .card-footer-info h3 {
+      margin: 0;
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .service-tag-pill {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #0369a1;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid #7dd3fc;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(10, 17, 34, 0.94);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      padding: 1.25rem;
+    }
+
+    .lightbox-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-container {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: lightboxPop 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes lightboxPop {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .lightbox-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #ffffff;
+      padding-bottom: 0.9rem;
+    }
+
+    .lightbox-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .lightbox-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .lightbox-status-pill {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .lightbox-status-pill.is-antes {
+      background: #e11d48;
+      color: #ffffff;
+    }
+
+    .lightbox-status-pill.is-depois {
+      background: #10b981;
+      color: #ffffff;
+    }
+
+    .lightbox-counter {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #e0f2fe;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+    }
+
+    .lightbox-close-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .lightbox-close-btn:hover {
+      background: #e11d48;
+      transform: scale(1.08);
+    }
+
+    .lightbox-body {
+      position: relative;
+      width: 100%;
+      max-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(2, 132, 199, 0.3);
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      display: block;
+      transition: opacity 0.2s ease;
+    }
+
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+
+    .lightbox-nav-btn:hover {
+      background: #0284c7;
+      border-color: #38bdf8;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.5);
+    }
+
+    .lightbox-prev {
+      left: 12px;
+    }
+
+    .lightbox-next {
+      right: 12px;
+    }
+
+    .lightbox-footer-tip {
+      color: #94a3b8;
+      font-size: 0.82rem;
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    /* CTA / Contact Section */
+    .cta-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 5rem 1.25rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-container {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-tag {
+      background: rgba(2, 132, 199, 0.25);
+      border: 1px solid rgba(14, 165, 233, 0.4);
+      color: #7dd3fc;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 1rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-desc {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      margin: 0 auto 2.5rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .btn-cta-whatsapp {
+      background-color: var(--whatsapp);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 1.1rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-cta-whatsapp:hover {
+      background-color: var(--whatsapp-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+    }
+
+    .btn-cta-instagram {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-cta-instagram:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #0b1120;
+      color: #94a3b8;
+      padding: 3.5rem 1.25rem 2rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .footer-brand h3 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      margin: 0 0 0.3rem;
+    }
+
+    .footer-brand p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: #1e293b;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--whatsapp);
+      color: #ffffff;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+      z-index: 999;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.6);
+    }
+
+    /* Global Site-Wide Subtle Floating Soap Bubbles */
+    .global-bubbles-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .g-bubble {
+      position: absolute;
+      bottom: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.75) 0%, rgba(186, 230, 253, 0.22) 40%, rgba(56, 189, 248, 0.1) 75%, rgba(255, 255, 255, 0.35) 100%);
+      box-shadow: inset -1.5px -1.5px 5px rgba(2, 132, 199, 0.18), inset 1.5px 1.5px 4px rgba(255, 255, 255, 0.65), 0 0 10px rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      animation: globalBubbleFloat linear infinite;
+      opacity: 0.45;
+    }
+
+    .g-bubble::after {
+      content: '';
+      position: absolute;
+      top: 18%;
+      left: 20%;
+      width: 25%;
+      height: 25%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .gb-1  { width: 32px; height: 32px; left: 4%;  animation-duration: 22s; animation-delay: 0s; }
+    .gb-2  { width: 48px; height: 48px; left: 13%; animation-duration: 27s; animation-delay: 4s; }
+    .gb-3  { width: 22px; height: 22px; left: 24%; animation-duration: 19s; animation-delay: 1.5s; }
+    .gb-4  { width: 56px; height: 56px; left: 36%; animation-duration: 31s; animation-delay: 8s; }
+    .gb-5  { width: 28px; height: 28px; left: 48%; animation-duration: 21s; animation-delay: 3s; }
+    .gb-6  { width: 42px; height: 42px; left: 59%; animation-duration: 26s; animation-delay: 6.5s; }
+    .gb-7  { width: 20px; height: 20px; left: 69%; animation-duration: 18s; animation-delay: 2s; }
+    .gb-8  { width: 52px; height: 52px; left: 78%; animation-duration: 29s; animation-delay: 9s; }
+    .gb-9  { width: 34px; height: 34px; left: 88%; animation-duration: 23s; animation-delay: 5s; }
+    .gb-10 { width: 26px; height: 26px; left: 95%; animation-duration: 20s; animation-delay: 11s; }
+
+    @keyframes globalBubbleFloat {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.85);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.45;
+      }
+      85% {
+        opacity: 0.45;
+      }
+      100% {
+        transform: translateY(calc(-100vh - 120px)) translateX(35px) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    /* Video Section */
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      background: #0f172a;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(2, 132, 199, 0.12), 0 0 0 1px #e2e8f0;
+      aspect-ratio: 9 / 16;
+      max-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px;
+    }
+
+    /* WhatsApp Custom Name Modal */
+    .wa-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .wa-modal-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .wa-modal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 440px;
+      width: 100%;
+      padding: 2rem 1.85rem;
+      position: relative;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.28), 0 0 0 1px #e2e8f0;
+      animation: waModalPop 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes waModalPop {
+      from { transform: scale(0.92) translateY(12px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .wa-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #64748b;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .wa-modal-close:hover {
+      background: #e2e8f0;
+      color: var(--navy);
+      transform: scale(1.06);
+    }
+
+    .wa-modal-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #25D366 0%, #1ea952 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+    }
+
+    .wa-modal-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .wa-modal-subtitle {
+      font-size: 0.94rem;
+      color: #64748b;
+      margin: 0 0 1.5rem;
+      line-height: 1.5;
+    }
+
+    .wa-modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .wa-input-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      text-align: left;
+    }
+
+    .wa-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .wa-input {
+      width: 100%;
+      padding: 0.85rem 1.05rem;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 1rem;
+      color: var(--navy);
+      background-color: #f8fafc;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .wa-input:focus {
+      border-color: #0284c7;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18);
+    }
+
+    .btn-wa-submit {
+      background: linear-gradient(135deg, #25D366 0%, #1ea952 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.95rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.38);
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+
+    .btn-wa-submit:hover {
+      background: linear-gradient(135deg, #2ae36f 0%, #179346 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .cta-title {
+        font-size: 1.9rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CAMADA FIXA DE BOLHAS DE SABÃO NO SITE INTEIRO -->
+  <div class="global-bubbles-layer" aria-hidden="true">
+    <div class="g-bubble gb-1"></div>
+    <div class="g-bubble gb-2"></div>
+    <div class="g-bubble gb-3"></div>
+    <div class="g-bubble gb-4"></div>
+    <div class="g-bubble gb-5"></div>
+    <div class="g-bubble gb-6"></div>
+    <div class="g-bubble gb-7"></div>
+    <div class="g-bubble gb-8"></div>
+    <div class="g-bubble gb-9"></div>
+    <div class="g-bubble gb-10"></div>
+  </div>
+
+  <!-- TOPO / NAV -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo-container" aria-label="JF Higienização - Página inicial">
+        <div class="logo-badge">JF</div>
+        <div class="logo-text">Higienização <span>& Geral</span></div>
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="#servicos" class="nav-link">Serviços</a></li>
+          <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+          <li><a href="#resultados" class="nav-link">Antes e Depois</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://wa.me/5564999216298" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-nav wa-btn-trigger">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.462 3.498 1.341 5.023L2.016 22l5.097-1.328c1.474.805 3.136 1.23 4.918 1.23 5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm0 18.363c-1.508 0-2.984-.396-4.282-1.15l-.307-.18-3.033.79.808-2.955-.197-.313c-.832-1.325-1.272-2.859-1.272-4.434 0-4.606 3.748-8.354 8.283-8.354 4.536 0 8.284 3.748 8.284 8.354 0 4.606-3.748 8.282-8.283 8.282zm4.534-6.223c-.249-.125-1.473-.727-1.701-.81-.229-.083-.395-.125-.561.125-.166.249-.643.81-.788.976-.145.166-.29.187-.539.062s-1.05-.387-2.001-1.234c-.74-.66-1.24-1.476-1.385-1.725-.145-.249-.016-.384.108-.508.112-.111.249-.29.373-.435.124-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.561-1.35-.769-1.849-.202-.485-.407-.419-.561-.427l-.478-.008c-.166 0-.436.062-.664.311-.228.249-.872.852-.872 2.077 0 1.225.893 2.41 1.018 2.576.124.166 1.758 2.684 4.259 3.764.595.257 1.06.41 1.423.525.599.191 1.144.164 1.575.1 0.48-.072 1.473-.602 1.681-1.184.207-.581.207-1.08.145-1.184-.062-.104-.229-.166-.477-.291z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <!-- Floating Soap Bubbles -->
+    <div class="bubbles-layer" aria-hidden="true">
+      <div class="bubble bubble-1"></div>
+      <div class="bubble bubble-2"></div>
+      <div class="bubble bubble-3"></div>
+      <div class="bubble bubble-4"></div>
+      <div class="bubble bubble-5"></div>
+      <div class="bubble bubble-6"></div>
+      <div class="bubble bubble-7"></div>
+      <div class="bubble bubble-8"></div>
+      <div class="bubble bubble-9"></div>
+    </div>
+
+    <!-- Twinkling Cleaning Sparkles -->
+    <div class="sparkle sparkle-1" aria-hidden="true">✦</div>
+    <div class="sparkle sparkle-2" aria-hidden="true">✨</div>
+    <div class="sparkle sparkle-3" aria-hidden="true">✦</div>
+    <div class="sparkle sparkle-4" aria-hidden="true">✨</div>
+    <div class="sparkle sparkle-5" aria-hidden="true">✦</div>
+
+    <div class="hero-container">
+      <div class="hero-animate-1">
+        <div class="hero-tag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+          </svg>
+          Especialistas em Limpeza e Higienização Técnica
+        </div>
+      </div>
+
+      <div class="hero-animate-2">
+        <h1 class="hero-title">Higienização profissional de estofados</h1>
+      </div>
+
+      <div class="hero-animate-3">
+        <p class="hero-subtitle">
+          Sofás, colchões, poltronas, cadeiras e estofados automotivos em Mineiros-GO e região. Há mais de 3 anos devolvendo vida, cor e conforto aos seus móveis.
+        </p>
+      </div>
+
+      <div class="hero-animate-4">
+        <div class="hero-actions">
+          <a href="https://wa.me/5564999216298" target="_blank" rel="noopener noreferrer" class="btn-hero-primary wa-btn-trigger">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.462 3.498 1.341 5.023L2.016 22l5.097-1.328c1.474.805 3.136 1.23 4.918 1.23 5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm0 18.363c-1.508 0-2.984-.396-4.282-1.15l-.307-.18-3.033.79.808-2.955-.197-.313c-.832-1.325-1.272-2.859-1.272-4.434 0-4.606 3.748-8.354 8.283-8.354 4.536 0 8.284 3.748 8.284 8.354 0 4.606-3.748 8.282-8.283 8.282zm4.534-6.223c-.249-.125-1.473-.727-1.701-.81-.229-.083-.395-.125-.561.125-.166.249-.643.81-.788.976-.145.166-.29.187-.539.062s-1.05-.387-2.001-1.234c-.74-.66-1.24-1.476-1.385-1.725-.145-.249-.016-.384.108-.508.112-.111.249-.29.373-.435.124-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.561-1.35-.769-1.849-.202-.485-.407-.419-.561-.427l-.478-.008c-.166 0-.436.062-.664.311-.228.249-.872.852-.872 2.077 0 1.225.893 2.41 1.018 2.576.124.166 1.758 2.684 4.259 3.764.595.257 1.06.41 1.423.525.599.191 1.144.164 1.575.1 0.48-.072 1.473-.602 1.681-1.184.207-.581.207-1.08.145-1.184-.062-.104-.229-.166-.477-.291z"/>
+            </svg>
+            Solicitar orçamento
+          </a>
+          <a href="#resultados" class="btn-hero-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            Ver resultados reais
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-animate-5">
+        <div class="hero-badges-row">
+          <div class="hero-badge-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Atendimento a Domicílio
+          </div>
+          <div class="hero-badge-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Produtos Notificados pela ANVISA
+          </div>
+          <div class="hero-badge-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Mineiros-GO e Região
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS SECTION -->
+  <section id="servicos" class="section-wrapper-white">
+    <div class="section">
+      <div class="section-header">
+        <span class="section-tag">Nossos Serviços</span>
+        <h2 class="section-title section-title-gradient">Soluções completas em higienização</h2>
+        <p class="section-desc">Cuidado especializado com equipamentos de ponta para renovar e desinfetar seus estofados com máxima segurança.</p>
+      </div>
+
+    <div class="services-grid">
+      <!-- Card 1 -->
+      <div class="service-card">
+        <div class="service-icon-box">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 19v-3m12 3v-3M3 10h18M5 14h14a2 2 0 002-2V9a2 2 0 00-2-2h-1a2 2 0 00-2-2H8a2 2 0 00-2 2H5a2 2 0 00-2 2v3a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <h3>Higienização de sofás e poltronas</h3>
+        <p>Limpeza profunda com extração de sujidades acumuladas. Remove odores, ácaros e manchas, recuperando o toque e a cor original.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card">
+        <div class="service-icon-box">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+            <path d="M6 12h12M6 9h4m4 0h4M6 15h12"></path>
+          </svg>
+        </div>
+        <h3>Higienização de colchões</h3>
+        <p>Ação antibactericida e antifúngica intensiva para eliminar ácaros e suor. Garanta noites de sono saudáveis para toda a sua família.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card">
+        <div class="service-icon-box">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 9V6a2 2 0 00-2-2H7a2 2 0 00-2 2v3"></path>
+            <path d="M5 13a2 2 0 012-2h10a2 2 0 012 2v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-4z"></path>
+            <path d="M6 19v3m12-3v3"></path>
+          </svg>
+        </div>
+        <h3>Cadeiras e estofados em geral</h3>
+        <p>Limpeza para cadeiras de jantar, escritório, puffs e almofadas. Remoção de manchas difíceis preservando as fibras do tecido.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card">
+        <div class="service-icon-box">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2 12v4c0 .6.4 1 1 1h2"></path>
+            <circle cx="7" cy="17" r="2"></circle>
+            <circle cx="17" cy="17" r="2"></circle>
+          </svg>
+        </div>
+        <h3>Bancos automotivos</h3>
+        <p>Higienização detalhada do interior do seu veículo. Elimina sujeira pesada, poeira e odores desagradáveis de bancos e forrações.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="service-card">
+        <div class="service-icon-box">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"></path>
+          </svg>
+        </div>
+        <h3>Impermeabilização de estofados</h3>
+        <p>Blindagem protetora contra líquidos, café, sucos e manchas. Facilita a limpeza diária e multiplica a durabilidade do móvel.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="service-card">
+        <div class="service-icon-box">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11"></path>
+          </svg>
+        </div>
+        <h3>Pós-obra e higienização geral</h3>
+        <p>Limpeza técnica e minuciosa para eliminar poeira fina, resíduos de gesso e sujidades após reformas residenciais e comerciais.</p>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS SECTION -->
+  <section id="diferenciais" class="diferenciais-section">
+    <div class="diferenciais-inner">
+      <div class="section-header">
+        <span class="section-tag">Por que escolher a JF</span>
+        <h2 class="section-title">Nosso padrão de qualidade e cuidado</h2>
+        <p class="section-desc">Procedimentos técnicos rigorosos e produtos profissionais homologados para proteger a saúde da sua família.</p>
+      </div>
+
+      <div class="diferenciais-grid">
+        <div class="diff-item">
+          <div class="diff-check">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="diff-content">
+            <h4>Avaliação Técnica</h4>
+            <p>Análise minuciosa do tipo de tecido e nível de sujidade para escolher a química e temperatura adequadas.</p>
+          </div>
+        </div>
+
+        <div class="diff-item">
+          <div class="diff-check">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="diff-content">
+            <h4>Aspiração Profunda</h4>
+            <p>Potente sucção a vácuo para sugar resíduos sólidos, ácaros e pó incrustado antes da fase úmida.</p>
+          </div>
+        </div>
+
+        <div class="diff-item">
+          <div class="diff-check">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="diff-content">
+            <h4>Produtos Específicos</h4>
+            <p>Uso exclusivo de limpadores profissionais bactericidas, biodegradáveis e sem danos à fibra do tecido.</p>
+          </div>
+        </div>
+
+        <div class="diff-item">
+          <div class="diff-check">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="diff-content">
+            <h4>Eliminação de Microrganismos</h4>
+            <p>Combate direto contra ácaros, bactérias e fungos causadores de alergias e rinites respiratórias.</p>
+          </div>
+        </div>
+
+        <div class="diff-item">
+          <div class="diff-check">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="diff-content">
+            <h4>Remoção de Odores e Manchas</h4>
+            <p>Neutralização de odores desagradáveis (suor, urina pet, mofo) e clareamento de manchas difíceis.</p>
+          </div>
+        </div>
+
+        <div class="diff-item">
+          <div class="diff-check">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="diff-content">
+            <h4>Revitalização da Cor Original</h4>
+            <p>Devolve o brilho, o toque macio e a vivacidade original do seu móvel sem desbotar o estofamento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA SERVIÇOS REALIZADOS -->
+  <section id="resultados" class="section-wrapper-cyan">
+    <div class="section">
+      <div class="section-header">
+        <span class="section-tag">Galeria de Resultados</span>
+        <h2 class="section-title section-title-gradient">Serviços Realizados</h2>
+        <p class="section-desc">Cada sofá, colchão e poltrona que passa pelas nossas mãos volta renovado: cor de volta, manchas que somem, aquele cheiro de limpeza de verdade. São resultados reais, conquistados com técnica profissional, em Mineiros-GO e região. O próximo antes e depois pode ser o seu.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Item 1: Colchão Ortobom -->
+        <article class="before-after-card">
+          <div class="photos-comparison">
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="0" data-furniture="Colchão Ortobom" data-state="Antes" aria-label="Ampliar foto: Colchão Ortobom Antes">
+              <span class="label-badge badge-antes">ANTES</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-33-23-741Z_Original_user_intent_Tool_generated_image_directi.png" alt="Colchão Ortobom antes da higienização" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="1" data-furniture="Colchão Ortobom" data-state="Depois" aria-label="Ampliar foto: Colchão Ortobom Depois">
+              <span class="label-badge badge-depois">DEPOIS</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-33-41-649Z_Original_user_intent_Tool_generated_image_directi.png" alt="Colchão Ortobom limpo e higienizado" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+          </div>
+          <div class="card-footer-info">
+            <h3>Colchão Ortobom</h3>
+            <span class="service-tag-pill">Higienização Profunda</span>
+          </div>
+        </article>
+
+        <!-- Item 2: Colchão Listrado -->
+        <article class="before-after-card">
+          <div class="photos-comparison">
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="2" data-furniture="Colchão Listrado" data-state="Antes" aria-label="Ampliar foto: Colchão Listrado Antes">
+              <span class="label-badge badge-antes">ANTES</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-36-04-775Z_Original_user_intent_Tool_generated_image_directi.png" alt="Colchão listrado com manchas antes" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="3" data-furniture="Colchão Listrado" data-state="Depois" aria-label="Ampliar foto: Colchão Listrado Depois">
+              <span class="label-badge badge-depois">DEPOIS</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-36-22-717Z_Original_user_intent_Tool_generated_image_directi.png" alt="Colchão listrado higienizado e revitalizado" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+          </div>
+          <div class="card-footer-info">
+            <h3>Colchão Listrado</h3>
+            <span class="service-tag-pill">Remoção de Manchas</span>
+          </div>
+        </article>
+
+        <!-- Item 3: Colchão Bamboo -->
+        <article class="before-after-card">
+          <div class="photos-comparison">
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="4" data-furniture="Colchão Bamboo" data-state="Antes" aria-label="Ampliar foto: Colchão Bamboo Antes">
+              <span class="label-badge badge-antes">ANTES</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-36-37-556Z_Original_user_intent_Tool_generated_image_directi.png" alt="Colchão Bamboo antes da limpeza técnica" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="5" data-furniture="Colchão Bamboo" data-state="Depois" aria-label="Ampliar foto: Colchão Bamboo Depois">
+              <span class="label-badge badge-depois">DEPOIS</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-36-54-624Z_Original_user_intent_Tool_generated_image_directi.png" alt="Colchão Bamboo após higienização antibacteriana" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+          </div>
+          <div class="card-footer-info">
+            <h3>Colchão Bamboo</h3>
+            <span class="service-tag-pill">Tratamento Antibacteriano</span>
+          </div>
+        </article>
+
+        <!-- Item 4: Banco de Veículo -->
+        <article class="before-after-card">
+          <div class="photos-comparison">
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="6" data-furniture="Banco de Veículo" data-state="Antes" aria-label="Ampliar foto: Banco de Veículo Antes">
+              <span class="label-badge badge-antes">ANTES</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-38-16-500Z_Original_user_intent_Tool_generated_image_directi.png" alt="Banco de veículo sujo antes da higienização" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="7" data-furniture="Banco de Veículo" data-state="Depois" aria-label="Ampliar foto: Banco de Veículo Depois">
+              <span class="label-badge badge-depois">DEPOIS</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-38-36-186Z_Original_user_intent_Tool_generated_image_directi.png" alt="Banco de veículo limpo como novo" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+          </div>
+          <div class="card-footer-info">
+            <h3>Banco de Veículo</h3>
+            <span class="service-tag-pill">Estofado Veicular</span>
+          </div>
+        </article>
+
+        <!-- Item 5: Cadeira Estofada -->
+        <article class="before-after-card">
+          <div class="photos-comparison">
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="8" data-furniture="Cadeira Estofada" data-state="Antes" aria-label="Ampliar foto: Cadeira Estofada Antes">
+              <span class="label-badge badge-antes">ANTES</span>
+              <img src="cadeiraantes.png" alt="Cadeira estofada com marcas de uso antes" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="9" data-furniture="Cadeira Estofada" data-state="Depois" aria-label="Ampliar foto: Cadeira Estofada Depois">
+              <span class="label-badge badge-depois">DEPOIS</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-39-29-227Z_Original_user_intent_Tool_generated_image_directi.png" alt="Cadeira estofada limpa e renovada" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+          </div>
+          <div class="card-footer-info">
+            <h3>Cadeira Estofada</h3>
+            <span class="service-tag-pill">Revitalização de Tecido</span>
+          </div>
+        </article>
+
+        <!-- Item 6: Colchão King Size -->
+        <article class="before-after-card">
+          <div class="photos-comparison">
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="10" data-furniture="Colchão King Size" data-state="Antes" aria-label="Ampliar foto: Colchão King Size Antes">
+              <span class="label-badge badge-antes">ANTES</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-39-19-552Z_Original_user_intent_Tool_generated_image_directi.png" alt="Colchão King Size com manchas antes" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+            <div class="photo-wrapper" role="button" tabindex="0" data-photo-idx="11" data-furniture="Colchão King Size" data-state="Depois" aria-label="Ampliar foto: Colchão King Size Depois">
+              <span class="label-badge badge-depois">DEPOIS</span>
+              <img src="https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-40-17-070Z_Original_user_intent_Tool_generated_image_directi.png" alt="Colchão King Size totalmente higienizado" loading="lazy">
+              <span class="zoom-hint">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                Ampliar
+              </span>
+            </div>
+          </div>
+          <div class="card-footer-info">
+            <h3>Colchão King Size</h3>
+            <span class="service-tag-pill">Higienização Completa</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE VÍDEOS -->
+  <section id="videos" class="section-wrapper-white">
+    <div class="section">
+      <div class="section-header">
+        <span class="section-tag">Demonstração em Ação</span>
+        <h2 class="section-title section-title-gradient">Veja Nosso Trabalho em Vídeo</h2>
+        <p class="section-desc">Acompanhe a eficiência da nossa extratora profissional eliminando as sujeiras mais profundas em tempo real.</p>
+      </div>
+
+      <div class="videos-grid">
+        <div class="video-card">
+          <video autoplay muted loop playsinline>
+            <source src="video1.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+        </div>
+
+        <div class="video-card">
+          <video autoplay muted loop playsinline>
+            <source src="video2.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO / CTA FINAL -->
+  <section id="contato" class="cta-section">
+    <div class="cta-container">
+      <span class="cta-tag">✨ Agendamento Fácil & Rápido</span>
+      <h2 class="cta-title">Agende sua higienização</h2>
+      <p class="cta-desc">
+        Atendemos Mineiros-GO e toda a região. Solicite seu orçamento sem compromisso e garanta estofados limpos, perfumados e livres de ácaros.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="https://wa.me/5564999216298" target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp wa-btn-trigger">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.462 3.498 1.341 5.023L2.016 22l5.097-1.328c1.474.805 3.136 1.23 4.918 1.23 5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm0 18.363c-1.508 0-2.984-.396-4.282-1.15l-.307-.18-3.033.79.808-2.955-.197-.313c-.832-1.325-1.272-2.859-1.272-4.434 0-4.606 3.748-8.354 8.283-8.354 4.536 0 8.284 3.748 8.284 8.354 0 4.606-3.748 8.282-8.283 8.282zm4.534-6.223c-.249-.125-1.473-.727-1.701-.81-.229-.083-.395-.125-.561.125-.166.249-.643.81-.788.976-.145.166-.29.187-.539.062s-1.05-.387-2.001-1.234c-.74-.66-1.24-1.476-1.385-1.725-.145-.249-.016-.384.108-.508.112-.111.249-.29.373-.435.124-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.561-1.35-.769-1.849-.202-.485-.407-.419-.561-.427l-.478-.008c-.166 0-.436.062-.664.311-.228.249-.872.852-.872 2.077 0 1.225.893 2.41 1.018 2.576.124.166 1.758 2.684 4.259 3.764.595.257 1.06.41 1.423.525.599.191 1.144.164 1.575.1 0.48-.072 1.473-.602 1.681-1.184.207-.581.207-1.08.145-1.184-.062-.104-.229-.166-.477-.291z"/>
+          </svg>
+          Chamar no WhatsApp 64 9 9921-6298
+        </a>
+
+        <a href="https://www.instagram.com/jfhigienizacaomyn/" target="_blank" rel="noopener noreferrer" class="btn-cta-instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          Siga no Instagram @jfhigienizacaomyn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>JF Higienização em estofados e geral</h3>
+          <p>Mineiros-GO e região • Há mais de 3 anos devolvendo vida e conforto aos seus móveis.</p>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://wa.me/5564999216298" target="_blank" rel="noopener noreferrer" class="social-link wa-btn-trigger" aria-label="Fale conosco pelo WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.462 3.498 1.341 5.023L2.016 22l5.097-1.328c1.474.805 3.136 1.23 4.918 1.23 5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm0 18.363c-1.508 0-2.984-.396-4.282-1.15l-.307-.18-3.033.79.808-2.955-.197-.313c-.832-1.325-1.272-2.859-1.272-4.434 0-4.606 3.748-8.354 8.283-8.354 4.536 0 8.284 3.748 8.284 8.354 0 4.606-3.748 8.282-8.283 8.282zm4.534-6.223c-.249-.125-1.473-.727-1.701-.81-.229-.083-.395-.125-.561.125-.166.249-.643.81-.788.976-.145.166-.29.187-.539.062s-1.05-.387-2.001-1.234c-.74-.66-1.24-1.476-1.385-1.725-.145-.249-.016-.384.108-.508.112-.111.249-.29.373-.435.124-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.561-1.35-.769-1.849-.202-.485-.407-.419-.561-.427l-.478-.008c-.166 0-.436.062-.664.311-.228.249-.872.852-.872 2.077 0 1.225.893 2.41 1.018 2.576.124.166 1.758 2.684 4.259 3.764.595.257 1.06.41 1.423.525.599.191 1.144.164 1.575.1 0.48-.072 1.473-.602 1.681-1.184.207-.581.207-1.08.145-1.184-.062-.104-.229-.166-.477-.291z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/jfhigienizacaomyn/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visite nosso perfil no Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 JF Higienização. Todos os direitos reservados.</div>
+        <div>Mineiros - GO | Atendimento Residencial, Comercial e Automotivo</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL PARA GALERIA -->
+  <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visualizador de fotos em tela cheia">
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <div class="lightbox-title-wrap">
+          <span id="lightboxStatus" class="lightbox-status-pill is-depois">DEPOIS</span>
+          <h2 id="lightboxTitle" class="lightbox-title">Colchão Ortobom</h2>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span id="lightboxCounter" class="lightbox-counter">1 / 12</span>
+          <button id="lightboxClose" class="lightbox-close-btn" aria-label="Fechar visualizador">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="lightbox-body" id="lightboxBody">
+        <button id="lightboxPrev" class="lightbox-nav-btn lightbox-prev" aria-label="Foto anterior">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <img id="lightboxImg" class="lightbox-image" src="" alt="Foto em destaque da higienização">
+
+        <button id="lightboxNext" class="lightbox-nav-btn lightbox-next" aria-label="Próxima foto">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="lightbox-footer-tip">
+        Navegue pelas setas do teclado (← / →) ou pelos botões. Pressione <strong>ESC</strong> ou clique fora para fechar.
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+  <a href="https://wa.me/5564999216298" class="floating-whatsapp wa-btn-trigger" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp agora">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.462 3.498 1.341 5.023L2.016 22l5.097-1.328c1.474.805 3.136 1.23 4.918 1.23 5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm0 18.363c-1.508 0-2.984-.396-4.282-1.15l-.307-.18-3.033.79.808-2.955-.197-.313c-.832-1.325-1.272-2.859-1.272-4.434 0-4.606 3.748-8.354 8.283-8.354 4.536 0 8.284 3.748 8.284 8.354 0 4.606-3.748 8.282-8.283 8.282zm4.534-6.223c-.249-.125-1.473-.727-1.701-.81-.229-.083-.395-.125-.561.125-.166.249-.643.81-.788.976-.145.166-.29.187-.539.062s-1.05-.387-2.001-1.234c-.74-.66-1.24-1.476-1.385-1.725-.145-.249-.016-.384.108-.508.112-.111.249-.29.373-.435.124-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.561-1.35-.769-1.849-.202-.485-.407-.419-.561-.427l-.478-.008c-.166 0-.436.062-.664.311-.228.249-.872.852-.872 2.077 0 1.225.893 2.41 1.018 2.576.124.166 1.758 2.684 4.259 3.764.595.257 1.06.41 1.423.525.599.191 1.144.164 1.575.1 0.48-.072 1.473-.602 1.681-1.184.207-.581.207-1.08.145-1.184-.062-.104-.229-.166-.477-.291z"/>
+    </svg>
+  </a>
+
+  <!-- MODAL DE NOME PARA O WHATSAPP -->
+  <div id="waNameModal" class="wa-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="waModalTitle">
+    <div class="wa-modal-card">
+      <button id="waModalCloseBtn" class="wa-modal-close" aria-label="Fechar janela">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="wa-modal-badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.462 3.498 1.341 5.023L2.016 22l5.097-1.328c1.474.805 3.136 1.23 4.918 1.23 5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm0 18.363c-1.508 0-2.984-.396-4.282-1.15l-.307-.18-3.033.79.808-2.955-.197-.313c-.832-1.325-1.272-2.859-1.272-4.434 0-4.606 3.748-8.354 8.283-8.354 4.536 0 8.284 3.748 8.284 8.354 0 4.606-3.748 8.282-8.283 8.282zm4.534-6.223c-.249-.125-1.473-.727-1.701-.81-.229-.083-.395-.125-.561.125-.166.249-.643.81-.788.976-.145.166-.29.187-.539.062s-1.05-.387-2.001-1.234c-.74-.66-1.24-1.476-1.385-1.725-.145-.249-.016-.384.108-.508.112-.111.249-.29.373-.435.124-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.561-1.35-.769-1.849-.202-.485-.407-.419-.561-.427l-.478-.008c-.166 0-.436.062-.664.311-.228.249-.872.852-.872 2.077 0 1.225.893 2.41 1.018 2.576.124.166 1.758 2.684 4.259 3.764.595.257 1.06.41 1.423.525.599.191 1.144.164 1.575.1 0.48-.072 1.473-.602 1.681-1.184.207-.581.207-1.08.145-1.184-.062-.104-.229-.166-.477-.291z"/>
+        </svg>
+      </div>
+
+      <h3 id="waModalTitle" class="wa-modal-title">Qual é o seu nome?</h3>
+      <p class="wa-modal-subtitle">Para iniciarmos um atendimento personalizado com você no WhatsApp:</p>
+
+      <form id="waNameForm" class="wa-modal-form">
+        <div class="wa-input-wrap">
+          <label for="waInputName" class="wa-label">Seu nome:</label>
+          <input type="text" id="waInputName" class="wa-input" placeholder="Digite seu nome aqui..." autocomplete="name">
+        </div>
+
+        <button type="submit" class="btn-wa-submit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.462 3.498 1.341 5.023L2.016 22l5.097-1.328c1.474.805 3.136 1.23 4.918 1.23 5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm0 18.363c-1.508 0-2.984-.396-4.282-1.15l-.307-.18-3.033.79.808-2.955-.197-.313c-.832-1.325-1.272-2.859-1.272-4.434 0-4.606 3.748-8.354 8.283-8.354 4.536 0 8.284 3.748 8.284 8.354 0 4.606-3.748 8.282-8.283 8.282zm4.534-6.223c-.249-.125-1.473-.727-1.701-.81-.229-.083-.395-.125-.561.125-.166.249-.643.81-.788.976-.145.166-.29.187-.539.062s-1.05-.387-2.001-1.234c-.74-.66-1.24-1.476-1.385-1.725-.145-.249-.016-.384.108-.508.112-.111.249-.29.373-.435.124-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.561-1.35-.769-1.849-.202-.485-.407-.419-.561-.427l-.478-.008c-.166 0-.436.062-.664.311-.228.249-.872.852-.872 2.077 0 1.225.893 2.41 1.018 2.576.124.166 1.758 2.684 4.259 3.764.595.257 1.06.41 1.423.525.599.191 1.144.164 1.575.1 0.48-.072 1.473-.602 1.681-1.184.207-.581.207-1.08.145-1.184-.062-.104-.229-.166-.477-.291z"/>
+          </svg>
+          Conversar no WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Array com as 12 fotos reais dos 6 serviços (pares Antes e Depois)
+      const photosData = [
+        {
+          furniture: "Colchão Ortobom",
+          state: "ANTES",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-33-23-741Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Colchão Ortobom",
+          state: "DEPOIS",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-33-41-649Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Colchão Listrado",
+          state: "ANTES",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-36-04-775Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Colchão Listrado",
+          state: "DEPOIS",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-36-22-717Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Colchão Bamboo",
+          state: "ANTES",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-36-37-556Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Colchão Bamboo",
+          state: "DEPOIS",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-36-54-624Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Banco de Veículo",
+          state: "ANTES",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-38-16-500Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Banco de Veículo",
+          state: "DEPOIS",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-38-36-186Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Cadeira Estofada",
+          state: "ANTES",
+          src: "cadeiraantes.png"
+        },
+        {
+          furniture: "Cadeira Estofada",
+          state: "DEPOIS",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-39-29-227Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Colchão King Size",
+          state: "ANTES",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-39-19-552Z_Original_user_intent_Tool_generated_image_directi.png"
+        },
+        {
+          furniture: "Colchão King Size",
+          state: "DEPOIS",
+          src: "https://generated-images.adapta.one/danie0az%40icloud.com/01a11132-5eb7-709f-89c7-9586d32d5cb8/2026-10-06T12-40-17-070Z_Original_user_intent_Tool_generated_image_directi.png"
+        }
+      ];
+
+      // 2. Lightbox Elements
+      const modal = document.getElementById('lightboxModal');
+      const imgEl = document.getElementById('lightboxImg');
+      const titleEl = document.getElementById('lightboxTitle');
+      const statusEl = document.getElementById('lightboxStatus');
+      const counterEl = document.getElementById('lightboxCounter');
+      const closeBtn = document.getElementById('lightboxClose');
+      const prevBtn = document.getElementById('lightboxPrev');
+      const nextBtn = document.getElementById('lightboxNext');
+
+      let currentIdx = 0;
+
+      function renderLightbox(idx) {
+        if (idx < 0) idx = photosData.length - 1;
+        if (idx >= photosData.length) idx = 0;
+        currentIdx = idx;
+
+        const item = photosData[currentIdx];
+        imgEl.style.opacity = '0.3';
+        imgEl.src = item.src;
+        imgEl.onload = () => {
+          imgEl.style.opacity = '1';
+        };
+
+        titleEl.textContent = item.furniture;
+        statusEl.textContent = item.state;
+        if (item.state === 'ANTES') {
+          statusEl.className = 'lightbox-status-pill is-antes';
+        } else {
+          statusEl.className = 'lightbox-status-pill is-depois';
+        }
+
+        counterEl.textContent = `${currentIdx + 1} / ${photosData.length}`;
+      }
+
+      function openLightbox(idx) {
+        renderLightbox(idx);
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      // Eventos de clique nas fotos da galeria
+      document.querySelectorAll('.photo-wrapper').forEach(wrapper => {
+        wrapper.addEventListener('click', () => {
+          const idx = parseInt(wrapper.getAttribute('data-photo-idx'), 10);
+          openLightbox(isNaN(idx) ? 0 : idx);
+        });
+
+        wrapper.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const idx = parseInt(wrapper.getAttribute('data-photo-idx'), 10);
+            openLightbox(isNaN(idx) ? 0 : idx);
+          }
+        });
+      });
+
+      // Navegação do Lightbox
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        renderLightbox(currentIdx - 1);
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        renderLightbox(currentIdx + 1);
+      });
+
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      // Fechar clicando no fundo escuro
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('lightbox-container')) {
+          closeLightbox();
+        }
+      });
+
+      // Controle via teclado (ESC, ArrowLeft, ArrowRight)
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('is-open')) return;
+        if (e.key === 'Escape') {
+          closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+          renderLightbox(currentIdx - 1);
+        } else if (e.key === 'ArrowRight') {
+          renderLightbox(currentIdx + 1);
+        }
+      });
+
+      // 3. Scroll reveal com animação escalonada
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('shell-fade');
+            }, 60);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.service-card, .before-after-card, .diff-item').forEach((el, index) => {
+        el.style.animationDelay = `${(index % 3) * 0.15}s`;
+        observer.observe(el);
+      });
+
+      // 4. Modal de Pergunta do Nome para o WhatsApp
+      const waModal = document.getElementById('waNameModal');
+      const waCloseBtn = document.getElementById('waModalCloseBtn');
+      const waForm = document.getElementById('waNameForm');
+      const waInput = document.getElementById('waInputName');
+      const WA_PHONE = '5564999216298';
+
+      function openWaModal() {
+        waModal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+          waInput.focus();
+        }, 100);
+      }
+
+      function closeWaModal() {
+        waModal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      // Interceptar cliques em todos os links e botões de WhatsApp
+      document.querySelectorAll('.wa-btn-trigger, a[href*="wa.me"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          openWaModal();
+        });
+      });
+
+      waCloseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeWaModal();
+      });
+
+      waModal.addEventListener('click', (e) => {
+        if (e.target === waModal) {
+          closeWaModal();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && waModal.classList.contains('is-open')) {
+          closeWaModal();
+        }
+      });
+
+      waForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const userName = waInput.value.trim();
+        let messageText = '';
+
+        if (userName) {
+          messageText = `Olá! Me chamo ${userName}, vim através do site e gostaria de saber mais informações sobre os serviços de higienização.`;
+        } else {
+          messageText = 'Olá! Vim através do site e gostaria de saber mais informações sobre os serviços de higienização.';
+        }
+
+        const targetUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(messageText)}`;
+        window.open(targetUrl, '_blank');
+        closeWaModal();
+        waInput.value = '';
+      });
+
+      // Garantir autoplay e loop silencioso nos vídeos
+      document.querySelectorAll('.video-card video').forEach(vid => {
+        vid.muted = true;
+        vid.play().catch(() => {});
+      });
+    });
+  </script>
+<script>
+/* Skip artifact shell — fixed helpers served beside every artifact. */
+(function () {
+  "use strict";
+
+  var fmt = {
+    num: function (v, opts) { return new Intl.NumberFormat("pt-BR", opts || {}).format(v); },
+    brl: function (v) { return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v); },
+    pct: function (v) { return new Intl.NumberFormat("pt-BR", { style: "percent", maximumFractionDigits: 1 }).format(v); }
+  };
+
+  // axisFmt keeps axis tick labels short (compact notation) so long values
+  // (e.g. full BRL amounts) never clip against the plot edge.
+  function axisFmt(v) {
+    return fmt.num(v, { notation: "compact", maximumFractionDigits: 1 });
+  }
+
+  // format accepts a function OR one of the fmt names ("num" | "brl" | "pct").
+  function coerceFormat(spec) {
+    if (typeof spec === "function") return spec;
+    if (typeof spec === "string" && fmt[spec]) return fmt[spec];
+    return function (v) { return fmt.num(v); };
+  }
+
+  function accent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2563eb";
+  }
+  function mutedColor() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--text-muted").trim() || "#5b6472";
+  }
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function frame(el, w, h) {
+    var svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, role: "img" });
+    el.innerHTML = "";
+    el.appendChild(svg);
+    return svg;
+  }
+
+  // maxOf guards the axis scale: empty values would give -Infinity (truthy,
+  // so "|| 1" can't catch it) and a non-positive max would flip the chart.
+  function maxOf(values) {
+    var m = values.length ? Math.max.apply(null, values) : 0;
+    return m > 0 ? m : 1;
+  }
+
+  // bar(el, {labels:[], values:[], color?, format?}) — vertical bar chart.
+  function bar(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 12, plotH = H - padT - padB;
+    var step = plotW / n, bw = Math.min(step * 0.62, 64);
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 12, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    cfg.values.forEach(function (v, i) {
+      var bh = Math.max(0, (v / max) * plotH);
+      var x = padL + i * step + (step - bw) / 2;
+      var y = padT + plotH - bh;
+      var r = svgEl("rect", { x: x, y: y, width: bw, height: bh, rx: 4, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(v);
+      r.appendChild(t);
+      svg.appendChild(r);
+      var tx = svgEl("text", { x: x + bw / 2, y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // line(el, {labels:[], values:[], color?, format?}) — single-series line.
+  function line(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 16, plotH = H - padT - padB;
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 16, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    var pts = cfg.values.map(function (v, i) {
+      var x = padL + (n === 1 ? plotW / 2 : (plotW * i) / (n - 1));
+      var y = padT + plotH - (v / max) * plotH;
+      return [x, y];
+    });
+    var d = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    svg.appendChild(svgEl("path", { d: d, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round" }));
+    pts.forEach(function (p, i) {
+      var c = svgEl("circle", { cx: p[0], cy: p[1], r: 3.5, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(cfg.values[i]);
+      c.appendChild(t);
+      svg.appendChild(c);
+      var tx = svgEl("text", { x: p[0], y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // donut(el, {labels:[], values:[], colors?}) — donut with center total.
+  function donut(el, cfg) {
+    var W = 320, H = 280, cx = W / 2, cy = H / 2, R = 92, r = 58;
+    var svg = frame(el, W, H);
+    var total = cfg.values.reduce(function (a, b) { return a + b; }, 0) || 1;
+    var palette = cfg.colors || [accent(), "#1baf7a", "#eda100", "#e34948", "#4a3aa7", "#e87ba4"];
+    var a0 = -Math.PI / 2;
+    cfg.values.forEach(function (v, i) {
+      var a1 = a0 + (v / total) * Math.PI * 2;
+      var large = a1 - a0 > Math.PI ? 1 : 0;
+      var p = ["M", cx + R * Math.cos(a0), cy + R * Math.sin(a0),
+        "A", R, R, 0, large, 1, cx + R * Math.cos(a1), cy + R * Math.sin(a1),
+        "L", cx + r * Math.cos(a1), cy + r * Math.sin(a1),
+        "A", r, r, 0, large, 0, cx + r * Math.cos(a0), cy + r * Math.sin(a0), "Z"].join(" ");
+      var path = svgEl("path", { d: p, fill: palette[i % palette.length] });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + fmt.num(v) + " (" + fmt.pct(v / total) + ")";
+      path.appendChild(t);
+      svg.appendChild(path);
+      a0 = a1;
+    });
+    var center = svgEl("text", { x: cx, y: cy + 5, "text-anchor": "middle", "font-size": 20, "font-weight": 650, fill: "currentColor" });
+    center.textContent = fmt.num(total);
+    svg.appendChild(center);
+  }
+
+  window.skipShell = { fmt: fmt };
+  window.skipChart = { bar: bar, line: line, donut: donut };
+})();
+
+</script>
+</body>
+</html>
